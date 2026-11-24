@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Walletmor | Il chip di pagamento sottocutaneo a Milano e Brescia</title>
+<meta name="description" content="Il Dott. Massimo Soresina è il primo chirurgo plastico in Italia autorizzato all'impianto del chip sottocutaneo Walletmor. Studi di Milano e Brescia.">
+<meta name="theme-color" content="#05070d">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#05070d;--surf:#0b1120;--line:#1c2740;--txt:#e8f0ff;--mut:#97a6c6;
+ --cy:#22e3ff;--vi:#8b5cff;--gr:#3dffa2;
+ --out:cubic-bezier(.23,1,.32,1);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font:17px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.05;letter-spacing:-.02em}
+.mono{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cy)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cy);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.grad{background:linear-gradient(100deg,var(--cy),var(--vi));-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;background:linear-gradient(100deg,var(--cy),var(--vi));color:#04060c;font-weight:600;text-decoration:none;border:0;transition:transform .16s var(--out),box-shadow .2s}
+.btn:active{transform:scale(.97)}
+.btn.o{background:transparent;color:var(--txt);border:1px solid var(--line)}
+@media(hover:hover) and (pointer:fine){.btn:hover{box-shadow:0 0 32px rgba(34,227,255,.35)}.btn.o:hover{border-color:var(--cy)}}
+
+/* nav */
+nav.top{position:fixed;inset:0 0 auto 0;z-index:20;backdrop-filter:blur(14px);background:rgba(5,7,13,.6);border-bottom:1px solid rgba(28,39,64,.6)}
+nav.top .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.brand{font-family:"Space Grotesk";font-weight:700;text-decoration:none}
+.brand small{display:block;font:400 11px "JetBrains Mono";color:var(--mut);letter-spacing:.1em}
+nav.top .btn{min-height:40px;padding:0 20px;font-size:15px}
+
+/* hero */
+.hero{min-height:100svh;display:grid;place-items:center;position:relative;padding:110px 0 70px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 70% 45%,rgba(139,92,255,.22),transparent 70%),radial-gradient(40% 40% at 25% 70%,rgba(34,227,255,.12),transparent 70%)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.25;mask-image:radial-gradient(70% 60% at 60% 50%,#000,transparent)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(42px,7vw,86px);margin:18px 0 22px}
+.hero p.l{font-size:20px;color:var(--mut);max-width:520px;margin-bottom:34px}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+.chipart{width:100%;max-width:460px;margin:auto;filter:drop-shadow(0 0 40px rgba(34,227,255,.25))}
+.ring{transform-origin:200px 200px;transform-box:view-box;animation:ring 3.2s var(--out) infinite;opacity:0}
+.ring:nth-of-type(2){animation-delay:1.05s}.ring:nth-of-type(3){animation-delay:2.1s}
+@keyframes ring{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.float{animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-10px)}}
+.scrollcue{position:absolute;bottom:22px;left:50%;translate:-50% 0;color:var(--mut);font:12px "JetBrains Mono";letter-spacing:.2em;text-transform:uppercase}
+.scrollcue i{display:block;width:1px;height:34px;margin:8px auto 0;background:linear-gradient(var(--cy),transparent);animation:cue 2s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s var(--out),transform .6s var(--out)}
+.rv.in{opacity:1;transform:none}
+.rv:nth-child(2){transition-delay:.06s}.rv:nth-child(3){transition-delay:.12s}.rv:nth-child(4){transition-delay:.18s}
+
+/* anatomy */
+.anat{height:260svh;position:relative}
+.anat .stick{position:sticky;top:0;height:100svh;display:grid;align-items:center}
+.anat .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.anat h2,.apps h2,.facts h2{font-size:clamp(34px,5vw,60px);margin:14px 0 18px}
+.lay{will-change:transform}
+.lbl{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line);opacity:.35;transition:opacity .3s}
+.lbl.on{opacity:1}.lbl b{font:500 13px "JetBrains Mono";color:var(--cy)}
+.lbl h3{font-size:20px}.lbl p{color:var(--mut);font-size:15.5px}
+
+/* apps pinned */
+.apps{height:620svh;position:relative}
+.apps .stick{position:sticky;top:0;height:100svh;display:flex;align-items:center}
+.apps .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;width:100%}
+.txts{position:relative;min-height:230px}
+.tx{position:absolute;inset:0 0 auto 0;opacity:0;transform:translateY(18px);transition:opacity .35s var(--out),transform .45s var(--out);pointer-events:none}
+.tx.on{opacity:1;transform:none;pointer-events:auto}
+.tx h3{font-size:clamp(30px,4vw,48px);margin:10px 0 14px}
+.tx p{color:var(--mut);max-width:440px}
+.tag{display:inline-block;margin-top:18px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;font:12px "JetBrains Mono";color:var(--mut)}
+.tag.ok{border-color:var(--gr);color:var(--gr)}
+.rail{display:flex;gap:8px;margin-top:24px}
+.rail span{height:3px;flex:1;background:var(--line);border-radius:3px;overflow:hidden}
+.rail span i{display:block;height:100%;background:linear-gradient(90deg,var(--cy),var(--vi));transform:scaleX(0);transform-origin:left;transition:transform .35s var(--out)}
+.rail span.on i,.rail span.done i{transform:scaleX(1)}
+.stage{position:relative;aspect-ratio:1;max-width:520px;width:100%;margin:auto;border:1px solid var(--line);border-radius:28px;background:radial-gradient(70% 70% at 50% 40%,#101a33,var(--surf));overflow:hidden}
+.stage svg{position:absolute;inset:0;width:100%;height:100%}
+.sc{opacity:0;transition:opacity .4s var(--out)}
+.sc.on{opacity:1}
+.sc *{animation-play-state:paused}.sc.on *{animation-play-state:running}
+.st{fill:none;stroke:var(--cy);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.dim{stroke:#34466e}.fl{fill:#0e1730}
+.arm{animation:tap 3.6s cubic-bezier(.77,0,.175,1) infinite}
+@keyframes tap{0%,12%{transform:translateX(0)}38%,70%{transform:translateX(115px)}92%,100%{transform:translateX(0)}}
+.wv{opacity:0;animation:wv 3.6s infinite}
+.wv:nth-child(2){animation-delay:.12s}.wv:nth-child(3){animation-delay:.24s}
+@keyframes wv{0%,36%{opacity:0}46%{opacity:1}62%,100%{opacity:0}}
+.pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop 3.6s var(--out) infinite}
+@keyframes pop{0%,52%{opacity:0;transform:scale(.8)}60%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
+.lockb{transform-box:fill-box;transform-origin:left bottom;animation:lk 3.6s var(--out) infinite}
+@keyframes lk{0%,52%{transform:none}62%,88%{transform:translateY(-10px) rotate(-30deg)}100%{transform:none}}
+.door{transform-box:fill-box;transform-origin:left center;animation:dr 3.6s var(--out) infinite}
+@keyframes dr{0%,58%{transform:none}72%,88%{transform:scaleX(.45)}100%{transform:none}}
+.bar{transform-box:fill-box;transform-origin:left center;animation:br 3.6s var(--out) infinite}
+@keyframes br{0%,52%{transform:none}66%,88%{transform:rotate(-70deg)}100%{transform:none}}
+.scan{animation:sn 3.6s ease-in-out infinite}
+@keyframes sn{0%,40%{transform:translateY(0);opacity:0}48%{opacity:1}74%{transform:translateY(100px);opacity:1}80%,100%{opacity:0}}
+.card{animation:cd 3.6s var(--out) infinite}
+@keyframes cd{0%,52%{transform:translateY(130px);opacity:0}70%,90%{transform:none;opacity:1}100%{transform:translateY(130px);opacity:0}}
+.svt{font:500 13px "JetBrains Mono";fill:var(--txt)}
+.svs{font:11px "JetBrains Mono";fill:var(--mut)}
+
+/* facts */
+.facts{padding:140px 0 100px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.cd{padding:28px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(160deg,#0e1730,var(--surf));transition:border-color .2s,transform .2s var(--out)}
+@media(hover:hover) and (pointer:fine){.cd:hover{border-color:var(--cy);transform:translateY(-4px)}}
+.cd .n{font:700 44px "Space Grotesk";background:linear-gradient(100deg,var(--cy),var(--vi));-webkit-background-clip:text;background-clip:text;color:transparent}
+.cd p{color:var(--mut);font-size:15.5px;margin-top:8px}
+.cd h3{font-size:22px;margin-top:6px}
+
+/* contact */
+.contact{padding:110px 0;text-align:center;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 100%,rgba(139,92,255,.25),transparent 70%)}
+.contact .wrap{position:relative}
+.contact h2{font-size:clamp(36px,6vw,72px);margin:14px 0 18px}
+.contact p.l{color:var(--mut);max-width:520px;margin:0 auto 32px}
+.contact .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.sedi{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:56px;text-align:left;font-size:15.5px;color:var(--mut)}
+.sedi b{display:block;color:var(--txt);font:500 13px "JetBrains Mono";letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+footer{border-top:1px solid var(--line);padding:30px 0 40px;font-size:13px;color:var(--mut)}
+footer p+p{margin-top:8px}
+
+@media(max-width:860px){
+ .hero .wrap,.anat .wrap,.apps .wrap{grid-template-columns:1fr}
+ .hero{padding-top:96px}.chipart{max-width:300px;order:-1}
+ .anat .stick{padding-top:76px;align-items:start}.anat .wrap{gap:12px}.anat svg.big{max-height:34svh}
+ .apps .wrap{gap:14px}.apps .stick{align-items:flex-start;padding-top:76px}
+ .apps h2{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+ .apps .wrap>div:first-child{order:2}.apps .stage{order:1}
+ .txts{min-height:190px}.tx h3{font-size:28px;margin:6px 0 8px}.tx p{font-size:16px}
+ .stage{max-width:min(310px,38svh)}
+ .cards{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .ring,.float,.scrollcue i{animation:none}
+ .arm,.wv,.pop,.lockb,.door,.bar,.scan,.card{animation-duration:0s}
+ .pop,.card{opacity:1;transform:none}
+ .rv{opacity:1;transform:none;transition:opacity .2s}
+}
+</style>
+</head>
+<body>
+<nav class="top"><div class="wrap">
+ <a class="brand" href="#top">Walletmor<small>by Dott. Massimo Soresina</small></a>
+ <a class="btn" href="#contatti">Prenota</a>
+</div></nav>
+
+<main id="top">
+<!-- HERO -->
+<header class="hero">
+ <div class="grid-bg"></div>
+ <div class="wrap">
+  <div>
+   <span class="mono rv">Primo chirurgo plastico in Italia autorizzato</span>
+   <h1 class="rv">Il tuo portafoglio<br>è <span class="grad">sotto la pelle.</span></h1>
+   <p class="l rv">Walletmor è il chip NFC sottocutaneo per pagare in contactless in qualsiasi momento, ovunque. Lo impianta il Dott. Massimo Soresina a Milano e Brescia.</p>
+   <div class="cta rv"><a class="btn" href="#contatti">Prenota una consulenza</a><a class="btn o" href="#app">Cosa puoi farci</a></div>
+  </div>
+  <svg class="chipart" viewBox="0 0 400 400" role="img" aria-label="Il chip Walletmor emette onde NFC">
+   <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22e3ff"/><stop offset="1" stop-color="#8b5cff"/></linearGradient></defs>
+   <circle class="ring" cx="200" cy="200" r="120" fill="none" stroke="url(#g1)" stroke-width="2"/>
+   <circle class="ring" cx="200" cy="200" r="120" fill="none" stroke="url(#g1)" stroke-width="2"/>
+   <circle class="ring" cx="200" cy="200" r="120" fill="none" stroke="url(#g1)" stroke-width="2"/>
+   <g class="float">
+    <rect x="130" y="165" width="140" height="70" rx="35" fill="#0b1426" stroke="url(#g1)" stroke-width="2.5"/>
+    <rect x="178" y="180" width="44" height="40" rx="6" fill="#0e1b38" stroke="#22e3ff" stroke-width="2"/>
+    <path d="M190 192h20M190 200h20M190 208h12" stroke="#22e3ff" stroke-width="2" stroke-linecap="round"/>
+    <path d="M148 200c0-14 10-22 22-22M148 200c0 14 10 22 22 22M252 200c0-14-10-22-22-22M252 200c0 14-10 22-22 22" fill="none" stroke="#8b5cff" stroke-width="2" stroke-linecap="round"/>
+   </g>
+  </svg>
+ </div>
+ <div class="scrollcue">Scorri<i></i></div>
+</header>
+
+<!-- ANATOMIA -->
+<section class="anat" id="chip" aria-labelledby="anat-t">
+ <div class="stick"><div class="wrap">
+  <svg class="big" viewBox="0 0 400 400" role="img" aria-label="Vista esplosa del chip: capsula, antenna e chip di silicio">
+   <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22e3ff"/><stop offset="1" stop-color="#8b5cff"/></linearGradient></defs>
+   <g class="lay" id="l1"><rect x="60" y="150" width="280" height="100" rx="50" fill="rgba(34,227,255,.06)" stroke="#22e3ff" stroke-width="2.5"/></g>
+   <g class="lay" id="l2"><path d="M95 200c0-34 24-52 52-52h106c28 0 52 18 52 52s-24 52-52 52H147c-28 0-52-18-52-52z" fill="none" stroke="#8b5cff" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round"/><path d="M115 200c0-22 14-36 34-36h102c20 0 34 14 34 36s-14 36-34 36H149c-20 0-34-14-34-36z" fill="none" stroke="#8b5cff" stroke-width="2.5" stroke-linecap="round"/></g>
+   <g class="lay" id="l3"><rect x="172" y="170" width="56" height="60" rx="8" fill="#0e1b38" stroke="url(#g2)" stroke-width="2.5"/><path d="M184 186h32M184 200h32M184 214h20" stroke="#22e3ff" stroke-width="2.5" stroke-linecap="round"/></g>
+  </svg>
+  <div>
+   <span class="mono">Dentro la capsula</span>
+   <h2 id="anat-t">Tre strati. <span class="grad">Zero batterie.</span></h2>
+   <div class="lbl on" data-l="0"><b>01</b><div><h3>Capsula biocompatibile</h3><p>Sigillata ermeticamente, in materiali biocompatibili di altissima qualità.</p></div></div>
+   <div class="lbl" data-l="1"><b>02</b><div><h3>Antenna NFC</h3><p>Transponder passivo: si attiva solo quando lo avvicini a un terminale.</p></div></div>
+   <div class="lbl" data-l="2"><b>03</b><div><h3>Chip di silicio</h3><p>Custodisce i dati di pagamento.</p></div></div>
+  </div>
+ </div></div>
+</section>
+
+<!-- APPLICAZIONI -->
+<section class="apps" id="app" aria-labelledby="app-t">
+ <div class="stick"><div class="wrap">
+  <div>
+   <span class="mono">Cosa puoi farci</span>
+   <h2 id="app-t" class="sr" style="font-size:clamp(34px,5vw,60px);margin:14px 0 22px">Un gesto. <span class="grad">Tanti mondi.</span></h2>
+   <div class="txts">
+    <div class="tx on"><h3>Paga con la mano</h3><p>Avvicini il polso al POS contactless e il pagamento è fatto. Niente carta, niente telefono, niente da dimenticare a casa.</p><span class="tag ok">Disponibile con Walletmor</span></div>
+    <div class="tx"><h3>Apri le porte</h3><p>Casa, ufficio, palestra, coworking: un lettore NFC riconosce il chip e sblocca.</p><span class="tag">Scenario NFC · da confermare</span></div>
+    <div class="tx"><h3>Viaggia senza biglietto</h3><p>Il tornello legge il chip come una carta contactless e ti fa passare.</p><span class="tag">Scenario NFC · da confermare</span></div>
+    <div class="tx"><h3>Entra a concerti ed eventi</h3><p>Il tuo ingresso è già con te: un tocco al varco al posto del QR code da cercare nel telefono.</p><span class="tag">Scenario NFC · da confermare</span></div>
+    <div class="tx"><h3>Il biglietto da visita 2.0</h3><p>Avvicini il telefono di chi hai davanti e gli compare il tuo profilo, link e contatti.</p><span class="tag">Scenario NFC · da confermare</span></div>
+   </div>
+   <div class="rail" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
+  </div>
+
+  <div class="stage" role="img" aria-label="Illustrazione animata dell'applicazione selezionata">
+   <svg viewBox="0 0 400 400" aria-hidden="true">
+    <defs>
+     <g id="arm"><rect x="-90" y="188" width="150" height="46" rx="23" class="fl st"/><rect x="22" y="196" width="26" height="30" rx="13" fill="rgba(34,227,255,.15)" stroke="#8b5cff" stroke-width="2"/><circle cx="35" cy="211" r="4" fill="#22e3ff"/></g>
+     <g id="waves"><path class="wv st" d="M92 195a24 24 0 0 1 0 32"/><path class="wv st" d="M104 186a38 38 0 0 1 0 50"/><path class="wv st" d="M116 177a52 52 0 0 1 0 68"/></g>
+    </defs>
+
+    <!-- 1 pagamento -->
+    <g class="sc on" data-s="0">
+     <rect x="255" y="120" width="100" height="170" rx="14" class="fl st dim"/>
+     <rect x="268" y="136" width="74" height="52" rx="6" fill="#071022" stroke="#22e3ff" stroke-width="2"/>
+     <text class="svt" x="305" y="158" text-anchor="middle">€ 4,50</text>
+     <g class="pop"><circle cx="305" cy="176" r="8" fill="none" stroke="#3dffa2" stroke-width="2.5"/><path d="M301 176l3 3 6-6" fill="none" stroke="#3dffa2" stroke-width="2.5" stroke-linecap="round"/></g>
+     <g class="st dim" stroke-width="2"><path d="M272 212h14M296 212h14M320 212h14M272 232h14M296 232h14M320 232h14M272 252h14M296 252h14M320 252h14"/></g>
+     <g transform="translate(115 0)"><use href="#waves"/></g>
+     <g class="arm"><use href="#arm" x="0"/></g>
+     <text class="svs" x="305" y="312" text-anchor="middle">POS CONTACTLESS</text>
+    </g>
+
+    <!-- 2 accessi -->
+    <g class="sc" data-s="1">
+     <rect x="250" y="70" width="110" height="260" rx="6" class="fl st dim"/>
+     <rect class="door fl st" x="262" y="82" width="86" height="236" rx="3"/>
+     <circle cx="335" cy="205" r="4" fill="#22e3ff"/>
+     <rect x="215" y="180" width="22" height="42" rx="6" fill="#071022" stroke="#22e3ff" stroke-width="2"/>
+     <g transform="translate(60 -8)"><use href="#waves" x="30"/></g>
+     <g transform="translate(206 138)"><rect x="-14" y="10" width="28" height="22" rx="4" fill="#071022" stroke="#3dffa2" stroke-width="2.5"/><path class="lockb" d="M-8 10V2a8 8 0 0 1 16 0v8" fill="none" stroke="#3dffa2" stroke-width="2.5" stroke-linecap="round"/></g>
+     <g class="arm"><use href="#arm" x="-48"/></g>
+     <text class="svs" x="305" y="352" text-anchor="middle">PORTA CON LETTORE NFC</text>
+    </g>
+
+    <!-- 3 trasporti -->
+    <g class="sc" data-s="2">
+     <rect x="240" y="150" width="120" height="150" rx="10" class="fl st dim"/>
+     <rect x="256" y="166" width="88" height="40" rx="6" fill="#071022" stroke="#22e3ff" stroke-width="2"/>
+     <text class="svt" x="300" y="186" text-anchor="middle">LINEA M3</text>
+     <text class="svs" x="300" y="200" text-anchor="middle">tocca per entrare</text>
+     <path class="bar st" d="M258 262h92" stroke-width="5"/>
+     <g class="pop"><circle cx="300" cy="228" r="8" fill="none" stroke="#3dffa2" stroke-width="2.5"/><path d="M296 228l3 3 6-6" fill="none" stroke="#3dffa2" stroke-width="2.5" stroke-linecap="round"/></g>
+     <g transform="translate(95 -10)"><use href="#waves" x="30"/></g>
+     <g class="arm"><use href="#arm" x="-20"/></g>
+     <text class="svs" x="300" y="330" text-anchor="middle">TORNELLO</text>
+    </g>
+
+    <!-- 4 eventi -->
+    <g class="sc" data-s="3">
+     <path d="M110 120h180a10 10 0 0 0 10 10v50a10 10 0 0 0-10 10v10a10 10 0 0 0 10 10v50a10 10 0 0 0-10 10H110a10 10 0 0 0-10-10v-50a10 10 0 0 0 10-10v-10a10 10 0 0 0-10-10v-50a10 10 0 0 0 10-10z" class="fl st dim" transform="translate(0 0)"/>
+     <text class="svt" x="130" y="165">LIVE · SABATO</text>
+     <text class="svs" x="130" y="185">INGRESSO · 1 PERSONA</text>
+     <g class="st dim" stroke-width="3"><path d="M130 210h12M148 210h6M160 210h14M180 210h8M194 210h12M212 210h6M224 210h14M244 210h10M130 232h8M144 232h14M164 232h6M176 232h12M194 232h10M210 232h14"/></g>
+     <rect class="scan" x="112" y="196" width="176" height="3" fill="#22e3ff" opacity="0"/>
+     <g class="pop"><circle cx="262" cy="160" r="12" fill="none" stroke="#3dffa2" stroke-width="2.5"/><path d="M256 160l4 4 8-8" fill="none" stroke="#3dffa2" stroke-width="2.5" stroke-linecap="round"/></g>
+     <text class="svs" x="200" y="330" text-anchor="middle">VARCO ELETTRONICO</text>
+    </g>
+
+    <!-- 5 biglietto da visita -->
+    <g class="sc" data-s="4">
+     <rect x="236" y="70" width="130" height="260" rx="22" class="fl st dim"/>
+     <rect x="300" y="80" width="0" height="0"/>
+     <g transform="translate(0 -26)"><g class="card"><rect x="248" y="170" width="106" height="130" rx="12" fill="#0b1426" stroke="url(#gv)" stroke-width="2.5"/>
+      <circle cx="274" cy="198" r="12" fill="rgba(139,92,255,.35)" stroke="#8b5cff" stroke-width="2"/>
+      <text class="svt" x="294" y="196">Luca R.</text><text class="svs" x="294" y="210">Developer</text>
+      <path d="M262 236h78M262 252h56M262 268h66" stroke="#22e3ff" stroke-width="2.5" stroke-linecap="round" opacity=".7"/></g></g>
+     <path d="M270 92h58" stroke="#34466e" stroke-width="4" stroke-linecap="round"/>
+     <g transform="translate(110 -4)"><use href="#waves" x="20"/></g>
+     <g class="arm"><use href="#arm" x="-40"/></g>
+     <defs><linearGradient id="gv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22e3ff"/><stop offset="1" stop-color="#8b5cff"/></linearGradient></defs>
+     <text class="svs" x="300" y="352" text-anchor="middle">SMARTPHONE DI CHI HAI DAVANTI</text>
+    </g>
+   </svg>
+  </div>
+ </div></div>
+</section>
+
+<!-- DATI -->
+<section class="facts" aria-labelledby="f-t"><div class="wrap">
+ <span class="mono">Sotto il cofano</span>
+ <h2 id="f-t">Pensato per essere <span class="grad">sicuro.</span></h2>
+ <div class="cards">
+  <div class="cd rv"><div class="n">NFC</div><h3>Transponder passivo</h3><p>Nessuna batteria da caricare né da sostituire: si attiva solo vicino a un lettore.</p></div>
+  <div class="cd rv"><div class="n">100%</div><h3>Capsula sigillata</h3><p>Chiusa ermeticamente, in materiali biocompatibili di altissima qualità.</p></div>
+  <div class="cd rv"><div class="n">24/7</div><h3>Pagamenti ovunque</h3><p>Funziona su qualsiasi terminale contactless, in qualsiasi momento.</p></div>
+ </div>
+</div></section>
+
+<!-- CONTATTI -->
+<section class="contact" id="contatti"><div class="wrap">
+ <span class="mono">Il primo passo</span>
+ <h2>Parliamone. <span class="grad">Di persona.</span></h2>
+ <p class="l">Scrivi su WhatsApp o chiama: lo studio ti spiega come funziona l'impianto e risponde alle tue domande.</p>
+ <div class="cta"><a class="btn" href="https://wa.me/393403306774">Scrivi su WhatsApp</a><a class="btn o" href="tel:+393403306774">340 330 6774</a></div>
+ <div class="sedi">
+  <div><b>Milano</b>Via Mario Pagano 42, 20145</div>
+  <div><b>Brescia</b>Indirizzo da fornire</div>
+  <div><b>Chirurgia</b>Casa di Cura La Madonnina<br>Via Quadronno 29, Milano</div>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <p>Dr. Massimo Soresina – Chirurgo Plastico | P.IVA 06430710969 | Iscritto all'Albo dei Medici Chirurghi di Milano dal 27/01/2004 al N. 39053</p>
+ <p>Le informazioni pubblicate hanno scopo puramente informativo e non sostituiscono la visita medica specialistica. © 2009-2026 Dr. Massimo Soresina.</p>
+</div></footer>
+
+<script>
+(()=>{
+ const $=(s,r=document)=>[...r.querySelectorAll(s)];
+ const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+ // reveal
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+ $('.rv').forEach(el=>io.observe(el));
+
+ // progresso di una sezione "sticky" da 0 a 1
+ const prog=el=>{const r=el.getBoundingClientRect();return Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)))};
+
+ const anat=$('.anat')[0],lay=[$('#l1')[0],$('#l2')[0],$('#l3')[0]],lbl=$('.lbl');
+ const apps=$('.apps')[0],sc=$('.sc'),tx=$('.tx'),rail=$('.rail span');
+ let cur=-1,ticking=false;
+
+ function frame(){
+  ticking=false;
+  const p=prog(anat);
+  const k=reduce?0:1;
+  // i tre strati si separano in verticale, poi si ricompongono nel label attivo
+  const sp=Math.min(1,p*2.2)*k,d=innerWidth<860?50:95;
+  lay[0].style.transform=`translateY(${-sp*d}px)`;
+  lay[1].style.transform=`translateY(0)`;
+  lay[2].style.transform=`translateY(${sp*d}px)`;
+  const li=p<.34?0:p<.67?1:2;
+  lbl.forEach((l,i)=>l.classList.toggle('on',i===li));
+
+  const q=prog(apps),n=sc.length;
+  const i=Math.min(n-1,Math.floor(q*n));
+  if(i!==cur){
+   cur=i;
+   sc.forEach((s,j)=>s.classList.toggle('on',j===i));
+   tx.forEach((t,j)=>t.classList.toggle('on',j===i));
+   rail.forEach((r,j)=>{r.classList.toggle('on',j===i);r.classList.toggle('done',j<i)});
+  }
+ }
+ const req=()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}};
+ addEventListener('scroll',req,{passive:true});addEventListener('resize',req);frame();
+})();
+</script>
+</body>
+</html>
