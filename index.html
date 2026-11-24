@@ -2,323 +2,282 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Walletmor | Il chip di pagamento sottocutaneo a Milano e Brescia</title>
 <meta name="description" content="Il Dott. Massimo Soresina è il primo chirurgo plastico in Italia autorizzato all'impianto del chip sottocutaneo Walletmor. Studi di Milano e Brescia.">
-<meta name="theme-color" content="#f4f1ec">
+<meta name="theme-color" content="#04121f">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/mano.webp">
 <style>
-:root{
- --paper:#f4f1ec;--card:#fff;--ink:#0f1b2d;--mut:#5b6b82;--line:#e6e0d6;
- --navy:#06182b;--navy2:#0b2a4a;--chip:#3dffd0;--blue:#4f6bff;
- --mint:#d9f5ee;--lilac:#e6e3ff;--sand:#f6e6d0;
- --out:cubic-bezier(.23,1,.32,1);--r:28px;
-}
+:root{--notte:#04121f;--carta:#f4f1ec;--ink:#0f1b2d;--mut:#5b6b82;--chip:#3dffd0;--out:cubic-bezier(.23,1,.32,1)}
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font:17px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+body{background:var(--notte);color:#eaf6ff;font:17px/1.6 Inter,system-ui,sans-serif}
 h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;line-height:1.05;letter-spacing:-.02em}
-h1 em,h2 em{font-style:italic;color:var(--blue)}
-.mono{font:500 12px "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+em{font-style:italic;color:var(--chip)}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+:focus-visible{outline:2px solid var(--chip);outline-offset:3px}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-.btn{display:inline-flex;align-items:center;min-height:50px;padding:0 28px;border-radius:999px;background:var(--ink);color:#fff;font-weight:600;text-decoration:none;border:1px solid var(--ink);transition:transform .16s var(--out),background .2s}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:999px;background:var(--chip);color:#04231d;font-weight:600;text-decoration:none;transition:transform .16s var(--out)}
 .btn:active{transform:scale(.97)}
-.btn.o{background:transparent;color:var(--ink);border-color:#c9c2b5}
-@media(hover:hover) and (pointer:fine){.btn:hover{background:var(--blue);border-color:var(--blue)}.btn.o:hover{background:#fff}}
-.bar{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--blue),var(--chip));transform:scaleX(0);transform-origin:left;z-index:30}
+.btn.o{background:none;color:#fff;box-shadow:inset 0 0 0 1px #4b6a8c}
 
-nav.top{position:fixed;inset:0 0 auto 0;z-index:20;background:rgba(244,241,236,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-nav.top .wrap{display:flex;justify-content:space-between;align-items:center;height:66px}
-.brand{font-family:Fraunces,serif;font-size:22px;text-decoration:none}
-.brand small{display:block;font:500 10.5px "JetBrains Mono";color:var(--mut);letter-spacing:.1em;text-transform:uppercase}
-nav.top .btn{min-height:42px;padding:0 22px;font-size:15px}
+nav.top{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top)}
+nav.top .wrap{max-width:none;padding:0 clamp(20px,4vw,56px);display:flex;justify-content:space-between;align-items:center;height:68px}
+.brand{font:500 22px/1.1 Fraunces,serif;text-decoration:none}
+.brand small{display:block;font:12px Inter;opacity:.7;margin-top:3px}
+nav.top .btn{min-height:44px;padding:0 20px;font-size:15px}
+nav.top{transition:color .3s,background .3s}
+nav.top.chiaro{color:var(--ink);background:rgba(244,241,236,.94)}
 
-/* cornice immagine (raggi X / scene) */
-.xr{position:relative;border-radius:var(--r);background:var(--navy);overflow:hidden;box-shadow:0 30px 70px rgba(6,24,43,.28)}
-.xr img{display:block;width:100%;height:100%;object-fit:cover}
-.scan{position:absolute;left:0;right:0;height:90px;background:linear-gradient(transparent,rgba(61,255,208,.14),transparent);animation:scan 5s ease-in-out infinite;pointer-events:none}
-@keyframes scan{0%{transform:translateY(-100px)}100%{transform:translateY(640px)}}
-.tagf{position:absolute;z-index:2;background:rgba(255,255,255,.96);color:var(--ink);border-radius:18px;padding:10px 14px;font-size:14px;font-weight:500;display:flex;gap:10px;align-items:center;box-shadow:0 14px 34px rgba(0,0,0,.28);animation:fl 5s ease-in-out infinite}
-.tagf i{width:10px;height:10px;border-radius:50%;background:var(--chip);box-shadow:0 0 0 4px rgba(61,255,208,.3)}
-@keyframes fl{50%{transform:translateY(-8px)}}
+/* scena unica: la mano resta ferma, cambia tutto il resto */
+.storia{height:1500svh;position:relative}
+.stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--notte)}
+.mondo,.strato{position:absolute;inset:0}
+.mondo{will-change:transform}
+.strato{visibility:hidden}
+.strato .amb{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;filter:brightness(.5)}
+.strato[data-n=mano] .amb,.strato[data-n=raggi] .amb{filter:none}
+.strato .fig{position:absolute;left:var(--x);top:var(--y);width:var(--l);height:var(--l);
+ -webkit-mask:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent),linear-gradient(transparent,#000 12%);
+ -webkit-mask-composite:source-in;mask:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent),linear-gradient(transparent,#000 12%);mask-composite:intersect}
+.scansione{position:absolute;left:0;right:0;top:0;height:2px;background:var(--chip);box-shadow:0 0 24px 6px rgba(61,255,208,.5);opacity:0}
+.sopra{position:absolute;left:var(--x);top:var(--y);width:var(--l);height:var(--l);overflow:visible;pointer-events:none}
+.velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(4,18,31,.9),rgba(4,18,31,.55) 34%,transparent 56%)}
+.anello{transform-box:fill-box;transform-origin:center;animation:an 2.4s linear infinite}
+.anello+.anello{animation-delay:-1.2s}
+@keyframes an{from{transform:scale(.5);opacity:.9}to{transform:scale(3);opacity:0}}
 
-/* hero */
-.hero{padding:120px 0 80px}
-.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(44px,6.4vw,84px);margin:16px 0 22px}
-.hero p.l{font-size:19px;color:var(--mut);max-width:500px;margin-bottom:32px}
-.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero .xr{aspect-ratio:4/5;max-height:660px}
+.tx{position:absolute;left:clamp(20px,6vw,110px);top:50%;width:min(440px,36vw);opacity:0;visibility:hidden}
+.tx h1{font-size:clamp(44px,5.6vw,82px);margin-bottom:22px}
+.tx h2{font-size:clamp(36px,4.2vw,62px);margin-bottom:16px}
+.tx p{color:#c3d8ea;max-width:40ch}
+.tx .nota{font-size:14px;margin-top:14px;color:#9fb9d0}
+.tx .cta{margin-top:28px}
+.esito{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;background:var(--chip);color:#04231d;font-weight:600;font-size:16px;padding:9px 18px 9px 14px;border-radius:999px;display:flex;gap:8px;align-items:center;opacity:0;visibility:hidden}
+.esito svg{width:18px;height:18px}
+.punti{position:absolute;right:clamp(10px,2vw,28px);top:50%;transform:translateY(-50%);display:grid;gap:10px}
+.punti i{width:6px;height:6px;border-radius:9px;background:#fff;opacity:.3;transition:opacity .3s,transform .3s var(--out)}
+.punti i.on{opacity:1;transform:scaleY(3);margin:6px 0}
+.scorri{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:14px;background:rgba(4,18,31,.72);padding:8px 18px;border-radius:99px}
 
-/* ticker */
-.ticker{overflow:hidden;border-block:1px solid var(--line);padding:16px 0;background:#fff}
-.ticker div{display:flex;gap:44px;width:max-content;animation:tk 34s linear infinite;font:500 13px "JetBrains Mono";letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
-.ticker span::before{content:"✦";color:var(--blue);margin-right:44px}
-@keyframes tk{to{transform:translateX(-50%)}}
-
-/* reveal */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--out),transform .7s var(--out)}
-.rv.in{opacity:1;transform:none}
-
-/* sezioni pinned */
-.pin{position:relative}
-.pin .stick{position:sticky;top:0;height:100svh;display:flex;align-items:center;padding-top:66px}
-.pin .wrap{display:grid;gap:48px;align-items:center;width:100%}
-h2.big{font-size:clamp(34px,4.8vw,58px);margin:14px 0 18px}
-
-/* dove si impianta: zoom sul punto */
-.imp{height:360svh}
-.imp .wrap{grid-template-columns:1fr 1fr}
-.imp .xr{aspect-ratio:4/5;max-height:calc(100svh - 120px);margin:auto;width:auto;max-width:100%;height:calc(100svh - 120px)}
-.zoom{position:absolute;inset:0;transform-origin:50% 50%;transition:transform 1.1s var(--out)}
-.pin2{position:absolute;width:0;height:0;opacity:0;transition:opacity .5s var(--out)}
-.pin2.on{opacity:1}
-.pin2 i{position:absolute;left:-26px;top:-26px;width:52px;height:52px;border-radius:50%;border:2px solid var(--chip);animation:rg 2.4s var(--out) infinite}
-.pin2 i:nth-child(2){animation-delay:.8s}
-@keyframes rg{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.8);opacity:0}}
-.site{margin-top:12px}
-.sc2{display:flex;gap:16px;padding:16px 18px;border-radius:20px;background:var(--card);border:1px solid var(--line);margin-top:12px;opacity:.45;transform:scale(.98);transition:opacity .35s var(--out),transform .35s var(--out),border-color .3s,box-shadow .3s}
-.sc2.on{opacity:1;transform:none;border-color:var(--ink);box-shadow:0 18px 40px rgba(15,27,45,.12)}
-.sc2 b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:500 14px "JetBrains Mono"}
-.sc2 h3{font:600 18px Inter;letter-spacing:0}
-.sc2 p{color:var(--mut);font-size:15px}
-.note{display:inline-block;margin-top:14px;font:500 12px "JetBrains Mono";color:#7a5a00;background:#fff3c4;padding:4px 10px;border-radius:999px}
-
-/* applicazioni */
-.apps{height:620svh}
-.apps .wrap{grid-template-columns:1fr 1.05fr}
-.txts{position:relative;min-height:240px}
-.tx{position:absolute;inset:0 0 auto 0;opacity:0;transform:translateY(20px);transition:opacity .4s var(--out),transform .5s var(--out);pointer-events:none}
-.tx.on{opacity:1;transform:none;pointer-events:auto}
-.tx h3{font-size:clamp(32px,4vw,50px);margin:0 0 12px}
-.tx p{color:var(--mut);max-width:440px}
-.pill{display:inline-block;margin-top:16px;padding:6px 14px;border-radius:999px;font:500 12px "JetBrains Mono";background:var(--lilac);color:#3a3aa8}
-.pill.ok{background:var(--mint);color:#0b6b57}
-.rail{display:flex;gap:8px;margin-top:20px}
-.rail span{height:4px;flex:1;background:#d9d2c4;border-radius:4px;overflow:hidden}
-.rail i{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left}
-.apps .xr{aspect-ratio:1;width:100%;max-width:540px;margin:auto}
-.apps .xr img{position:absolute;inset:0;opacity:0;transform:scale(1.08);transition:opacity .6s var(--out),transform 6s linear}
-.apps .xr img.on{opacity:1;transform:scale(1)}
-
-/* galleria stile Pinterest */
-.gal{padding:120px 0 40px}
-.gal .head{max-width:640px;margin-bottom:44px}
-.mas{columns:3;column-gap:20px}
-.pc{break-inside:avoid;margin:0 0 20px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);overflow:hidden;transition:transform .3s var(--out),box-shadow .3s var(--out)}
-@media(hover:hover) and (pointer:fine){.pc:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(15,27,45,.14)}}
-.pc img{display:block;width:100%;object-fit:cover}
-.pc .b{padding:18px 20px 22px}
-.pc h3{font-size:25px;margin-bottom:6px}
-.pc p{color:var(--mut);font-size:15.5px}
-.pc.m{background:var(--mint);border-color:transparent}.pc.l{background:var(--lilac);border-color:transparent}.pc.s{background:var(--sand);border-color:transparent}
-.pc.n{background:var(--navy);color:#dff6ff;border-color:transparent}.pc.n p{color:#9fc0da}
-.big-n{font:500 64px/1 Fraunces,serif;letter-spacing:-.03em;margin-bottom:6px}
-.chip2{display:inline-block;margin-top:14px;padding:5px 12px;border-radius:999px;background:rgba(15,27,45,.08);font:500 11.5px "JetBrains Mono"}
-
-/* studio + contatti */
-.doc{padding:80px 0}
-.doc .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.doc img{width:100%;border-radius:var(--r);aspect-ratio:4/3;object-fit:cover}
-.doc p{color:var(--mut);margin-bottom:14px;max-width:520px}
-.contact{margin:30px auto 90px;max-width:1160px;padding:0 24px}
-.contact .in{border-radius:36px;background:var(--navy);color:#e8fbff;padding:72px 40px;text-align:center;position:relative;overflow:hidden}
-.contact .in::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 70% at 50% 120%,rgba(79,107,255,.55),transparent 70%)}
-.contact .in>*{position:relative}
-.contact h2{font-size:clamp(36px,6vw,70px);margin:12px 0 14px}
-.contact h2 em{color:var(--chip)}
-.contact p.l{color:#9fc0da;max-width:520px;margin:0 auto 30px}
-.contact .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.contact .btn{background:#fff;color:var(--ink);border-color:#fff}.contact .btn.o{background:transparent;color:#fff;border-color:#4b6a8c}
-.sedi{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:50px;text-align:left;font-size:15px;color:#9fc0da}
-.sedi b{display:block;color:#fff;font:500 12px "JetBrains Mono";letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
-footer{border-top:1px solid var(--line);padding:30px 0 44px;font-size:13px;color:var(--mut)}
+/* dopo la storia */
+.chiara{background:var(--carta);color:var(--ink);padding:120px 0 90px}
+.chiara em{color:#0a7f69}
+.chiara h2{font-size:clamp(34px,4.6vw,58px);margin-bottom:18px}
+.chiara p{color:var(--mut)}
+.fatti{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin:54px 0 110px;padding:0}
+.fatti li{list-style:none;border-top:2px solid var(--ink);padding-top:20px}
+.fatti h3{font-size:27px;margin-bottom:8px}
+.doc{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.doc img{width:100%;height:auto;border-radius:24px;display:block}
+.doc p+p{margin-top:14px}
+.contatti{padding:120px 0;text-align:center}
+.contatti h2{font-size:clamp(38px,6vw,74px);margin-bottom:16px}
+.contatti>div>p{color:#a9c4da;max-width:46ch;margin:0 auto 30px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.contatti .cta{justify-content:center}
+.sedi{display:flex;gap:24px 56px;justify-content:center;flex-wrap:wrap;margin-top:60px;text-align:left;color:#a9c4da}
+.sedi b{display:block;color:#fff}
+footer{border-top:1px solid #17304a;padding:28px 0 44px;font-size:13px;color:#8fabc4}
 footer p+p{margin-top:8px}
 
-@media(max-width:900px){
- .hero{padding-top:92px}.hero .wrap,.imp .wrap,.apps .wrap,.doc .wrap{grid-template-columns:1fr}
- .hero .xr{aspect-ratio:1;max-height:none}
- .imp .wrap,.apps .wrap{gap:12px;align-content:start}
- .pin .stick{align-items:flex-start;padding-top:78px}
- .imp .xr{aspect-ratio:1;width:100%;height:auto;max-width:min(320px,36svh)}
- .imp h2.big,.apps h2.big{display:none}.imp .mono{display:none}
- .sc2{padding:10px 14px;margin-top:8px}.sc2 p{font-size:14px}
- .apps .wrap>div:first-child{order:2}.apps .xr{order:1;max-width:min(310px,38svh)}
- .apps h2{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
- .txts{min-height:200px}.tx h3{font-size:30px}
- .mas{columns:2;column-gap:14px}.pc{margin-bottom:14px}
- .contact .in{padding:56px 22px}
+@media(max-width:800px){
+ .tx{top:calc(84px + env(safe-area-inset-top));left:24px;right:34px;width:auto}
+ .tx h1{font-size:clamp(38px,10.5vw,46px);margin-bottom:12px}.tx h2{font-size:34px;margin-bottom:10px}
+ .tx p{font-size:16px;line-height:1.5}.tx .cta{margin-top:16px}.tx .nota{margin-top:8px}
+ .velo{background:linear-gradient(rgba(4,18,31,.94) 30%,rgba(4,18,31,.5) 48%,transparent 62%)}
+ .fatti,.doc{grid-template-columns:1fr}.fatti{gap:30px;margin:40px 0 80px}
+ .chiara,.contatti{padding:84px 0}
 }
-@media(max-width:560px){.mas{columns:1}}
-@media(prefers-reduced-motion:reduce){
- html{scroll-behavior:auto}
- .scan,.tagf,.ticker div,.pin2 i{animation:none}
- .zoom,.apps .xr img{transition:opacity .2s}
- .rv{opacity:1;transform:none}
-}
+@media(max-width:800px) and (max-height:700px){.tx p{font-size:15px}.tx h1{font-size:34px}.tx h2{font-size:28px}.tx .cta{display:none}}
+@media(prefers-reduced-motion:reduce){.anello{animation:none;opacity:.4}}
 </style>
 </head>
 <body>
-<div class="bar" id="bar"></div>
-
-<nav class="top"><div class="wrap">
+<nav class="top" id="nav"><div class="wrap">
  <a class="brand" href="#top">Walletmor<small>Dott. Massimo Soresina</small></a>
  <a class="btn" href="#contatti">Prenota</a>
 </div></nav>
 
 <main id="top">
-<!-- HERO -->
-<header class="hero"><div class="wrap">
- <div>
-  <span class="mono rv">Primo chirurgo plastico in Italia autorizzato</span>
-  <h1 class="rv">Il tuo portafoglio è <em>sotto la pelle.</em></h1>
-  <p class="l rv">Walletmor è il chip NFC sottocutaneo per pagare in contactless in qualsiasi momento, ovunque. Lo impianta il Dott. Massimo Soresina a Milano e Brescia.</p>
-  <div class="cta rv"><a class="btn" href="#contatti">Prenota una consulenza</a><a class="btn o" href="#dove">Dove si impianta</a></div>
- </div>
- <div class="xr rv">
-  <img src="img/hero-mano-xray.jpg" width="825" height="1024" alt="Mano a raggi X con il chip Walletmor nella membrana tra pollice e indice">
-  <div class="scan"></div>
-  <div class="tagf" style="left:6%;bottom:7%"><i></i>Chip NFC passivo · nessuna batteria</div>
- </div>
-</div></header>
-
-<div class="ticker" aria-hidden="true"><div>
- <span>Pagamenti contactless</span><span>NFC passivo</span><span>Capsula biocompatibile</span><span>Milano · Brescia</span><span>Nessuna batteria</span><span>Pagamenti contactless</span><span>NFC passivo</span><span>Capsula biocompatibile</span><span>Milano · Brescia</span><span>Nessuna batteria</span>
-</div></div>
-
-<!-- DOVE SI IMPIANTA -->
-<section class="pin imp" id="dove" aria-labelledby="dove-t">
- <div class="stick"><div class="wrap">
-  <div class="xr" id="impx">
-   <div class="zoom" id="zoom">
-    <img src="img/punti-impianto.jpg" width="825" height="1024" alt="Mano a raggi X con due possibili punti d'impianto del chip: membrana tra pollice e indice e polso" loading="lazy">
-    <span class="pin2 on" data-p="0" style="left:63%;top:51%"><i></i><i></i></span>
-    <span class="pin2" data-p="1" style="left:50%;top:72%"><i></i><i></i></span>
-   </div>
-   <div class="scan"></div>
+<section class="storia" id="storia">
+ <div class="stick" id="stick">
+  <div class="mondo" id="mondo">
+   <div class="strato" data-n="mano"></div>
+   <div class="strato" data-n="raggi"></div>
+   <div class="strato" data-n="pos"></div>
+   <div class="strato" data-n="porta"></div>
+   <div class="strato" data-n="tornello"></div>
+   <div class="strato" data-n="concerto"></div>
+   <div class="strato" data-n="telefono"></div>
+   <div class="scansione" id="scan"></div>
+   <svg class="sopra" viewBox="0 0 1024 1024" aria-hidden="true">
+    <defs>
+     <linearGradient id="vetro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eafffb"/><stop offset=".35" stop-color="#57ffd9" stop-opacity=".85"/><stop offset="1" stop-color="#0b6f62"/></linearGradient>
+     <radialGradient id="alone"><stop offset="0" stop-color="#3dffd0" stop-opacity=".65"/><stop offset="1" stop-color="#3dffd0" stop-opacity="0"/></radialGradient>
+    </defs>
+    <path id="filo" fill="none" stroke="#3dffd0" stroke-width="4" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+    <g id="chip" opacity="0">
+     <circle r="70" fill="url(#alone)"/>
+     <g id="anelli" fill="none" stroke="#3dffd0" stroke-width="1.6" opacity="0"><circle class="anello" r="30"/><circle class="anello" r="30"/></g>
+     <g transform="rotate(62)">
+      <rect x="-30" y="-9" width="60" height="18" rx="9" fill="url(#vetro)" stroke="#d8fff6" stroke-width="1"/>
+      <rect x="-22" y="-5" width="26" height="10" rx="2" fill="#7a4a1c"/>
+      <path d="M-20-5v10M-17-5v10M-14-5v10M-11-5v10M-8-5v10M-5-5v10M-2-5v10M1-5v10" stroke="#f0b878" stroke-width="1.3"/>
+      <rect x="8" y="-4" width="11" height="8" rx="1" fill="#06231f"/>
+      <path d="M-23-6.2h46" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
+     </g>
+    </g>
+   </svg>
   </div>
-  <div>
-   <span class="mono">Dove si impianta</span>
-   <h2 class="big" id="dove-t">Dove può essere <em>impiantato.</em></h2>
-   <div class="site">
-    <div class="sc2 on" data-s="0"><b>1</b><div><h3>Membrana tra pollice e indice</h3><p>Un punto comodo da avvicinare al lettore.</p></div></div>
-    <div class="sc2" data-s="1"><b>2</b><div><h3>Polso</h3><p>Una posizione alternativa, più discreta.</p></div></div>
-   </div>
-   <span class="note">Posizioni da confermare con il Dott. Soresina</span>
-  </div>
- </div></div>
+  <div class="velo"></div>
+
+  <div class="tx" data-a="-1" data-b="1"><h1>Il tuo portafoglio sarà <em>sotto la pelle.</em></h1><p>Per ora è una mano come le altre. Scorri e guarda cosa può diventare.</p><div class="cta"><a class="btn" href="#contatti">Prenota una consulenza</a></div></div>
+  <div class="tx" data-a="1.15" data-b="2.75"><h2>Guardiamo <em>sotto.</em></h2><p>Tra pollice e indice non ci sono ossa: solo tessuto molle. È qui che trova posto il chip.</p></div>
+  <div class="tx" data-a="2.95" data-b="4.55"><h2>Il chip <em>entra.</em></h2><p>Una capsula ermetica in materiale biocompatibile, inserita nella membrana tra pollice e indice da un chirurgo plastico.</p></div>
+  <div class="tx" data-a="4.75" data-b="5.75"><h2>Adesso è <em>parte di te.</em></h2><p>Niente batteria, niente da caricare. Si attiva solo quando lo avvicini a un lettore.</p></div>
+  <div class="tx" data-a="5.95" data-b="7.5"><h2>Paghi <em>con la mano.</em></h2><p>La avvicini al POS contactless e hai finito. Carta e telefono possono restare a casa.</p></div>
+  <div class="tx" data-a="7.6" data-b="9.1"><h2>Apri <em>le porte.</em></h2><p>Casa, ufficio, palestra: il lettore riconosce il chip e sblocca.</p><p class="nota">Scenario NFC, da confermare</p></div>
+  <div class="tx" data-a="9.2" data-b="10.7"><h2>Passi i tornelli <em>senza biglietto.</em></h2><p>Il tornello legge la mano come una carta contactless.</p><p class="nota">Scenario NFC, da confermare</p></div>
+  <div class="tx" data-a="10.8" data-b="12.3"><h2>Entri <em>ai concerti.</em></h2><p>L'ingresso è già con te. Nessun QR code da cercare in coda.</p><p class="nota">Scenario NFC, da confermare</p></div>
+  <div class="tx" data-a="12.4" data-b="14"><h2>Ti presenti <em>con un gesto.</em></h2><p>Avvicini la mano a un telefono e compare il tuo profilo.</p><p class="nota">Scenario NFC, da confermare</p></div>
+
+  <div class="esito" id="esito"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span></span></div>
+  <div class="punti" id="punti" aria-hidden="true"></div>
+  <div class="scorri" id="scorri">Scorri</div>
+ </div>
 </section>
 
-<!-- APPLICAZIONI -->
-<section class="pin apps" id="app" aria-labelledby="app-t">
- <div class="stick"><div class="wrap">
-  <div>
-   <span class="mono">Cosa puoi farci</span>
-   <h2 class="big" id="app-t">Un gesto. <em>Tanti mondi.</em></h2>
-   <div class="txts">
-    <div class="tx on"><h3>Paga con la mano</h3><p>Avvicini la mano al POS contactless e il pagamento è fatto. Niente carta, niente telefono, niente da dimenticare a casa.</p><span class="pill ok">Disponibile con Walletmor</span></div>
-    <div class="tx"><h3>Apri le porte</h3><p>Casa, ufficio, palestra, coworking: un lettore NFC riconosce il chip e sblocca.</p><span class="pill">Scenario NFC · da confermare</span></div>
-    <div class="tx"><h3>Viaggia senza biglietto</h3><p>Il tornello legge il chip come una carta contactless e ti fa passare.</p><span class="pill">Scenario NFC · da confermare</span></div>
-    <div class="tx"><h3>Entra a concerti ed eventi</h3><p>Il tuo ingresso è già con te: un tocco al varco al posto del QR code da cercare nel telefono.</p><span class="pill">Scenario NFC · da confermare</span></div>
-    <div class="tx"><h3>Il biglietto da visita 2.0</h3><p>Avvicini il telefono di chi hai davanti e gli compare il tuo profilo, link e contatti.</p><span class="pill">Scenario NFC · da confermare</span></div>
-   </div>
-   <div class="rail" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
-  </div>
-  <div class="xr">
-   <img class="sc on" src="img/scena-pagamento.jpg" width="1024" height="1024" alt="Mano a raggi X con chip che avvicina il palmo a un POS contactless">
-   <img class="sc" src="img/scena-porta.jpg" width="1024" height="1024" alt="Mano a raggi X con chip davanti al lettore NFC di una porta" loading="lazy">
-   <img class="sc" src="img/scena-tornello.jpg" width="1024" height="1024" alt="Mano a raggi X con chip sul lettore di un tornello della metropolitana" loading="lazy">
-   <img class="sc" src="img/scena-evento.jpg" width="1024" height="1024" alt="Mano a raggi X con chip davanti a un varco elettronico di un concerto" loading="lazy">
-   <img class="sc" src="img/scena-biglietto.jpg" width="1024" height="1024" alt="Mano a raggi X con chip vicino a uno smartphone che mostra un profilo digitale" loading="lazy">
-  </div>
- </div></div>
-</section>
-
-<!-- GALLERIA -->
-<section class="gal"><div class="wrap">
- <div class="head"><span class="mono rv">In pratica</span><h2 class="big rv">Tecnologia che si <em>porta addosso.</em></h2></div>
- <div class="mas">
-  <article class="pc rv"><img loading="lazy" width="1024" height="1024" src="img/scena-pagamento.jpg" alt="Mano a raggi X con chip che paga su un POS"><div class="b"><h3>Contactless, ma senza oggetti</h3><p>Lo stesso gesto del pagamento col telefono, con il chip al posto dello smartphone.</p></div></article>
-  <article class="pc m rv"><div class="b"><div class="big-n">0</div><h3>batterie</h3><p>Il chip è passivo: si attiva solo vicino a un lettore, senza ricariche.</p><span class="chip2">NFC PASSIVO</span></div></article>
-  <article class="pc rv"><img loading="lazy" width="900" height="700" style="aspect-ratio:9/7" src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=900&q=75" alt="Mano bionica blu su sfondo turchese"><div class="b"><h3>Il futuro è già qui</h3><p>Per chi ama la tecnologia e vuole provarla in prima persona.</p></div></article>
-  <article class="pc n rv"><img loading="lazy" width="825" height="1024" style="aspect-ratio:4/3;object-position:50% 55%" src="img/hero-mano-xray.jpg" alt="Radiografia di una mano con il chip luminoso"><div class="b"><h3>Sicuro per costruzione</h3><p>Capsula ermeticamente sigillata, in materiali biocompatibili di altissima qualità.</p></div></article>
-  <article class="pc l rv"><div class="b"><div class="big-n">24/7</div><h3>Pagamenti ovunque</h3><p>Funziona su qualsiasi terminale contactless, in qualsiasi momento.</p><span class="chip2">SU TERMINALI CONTACTLESS</span></div></article>
-  <article class="pc rv"><img loading="lazy" width="1024" height="1024" src="img/scena-evento.jpg" alt="Mano a raggi X con chip davanti a un varco di concerto"><div class="b"><h3>Un tocco e sei dentro</h3><p>Dopo lo smartwatch, il passo successivo: niente da indossare, niente da caricare.</p></div></article>
-  <article class="pc s rv"><div class="b"><h3>Un gesto da chirurgo</h3><p>L'impianto lo esegue un chirurgo plastico iscritto all'Albo di Milano dal 2004, il primo in Italia autorizzato all'impianto Walletmor.</p><span class="chip2">ALBO MILANO N. 39053</span></div></article>
+<section class="chiara"><div class="wrap">
+ <h2>Un chip solo, <em>sempre con te.</em></h2>
+ <ul class="fatti">
+  <li><h3>Nessuna batteria</h3><p>È un transponder NFC passivo: un chip di silicio con i dati di pagamento e la sua antenna.</p></li>
+  <li><h3>Capsula sigillata</h3><p>Chiusa ermeticamente, in materiali biocompatibili di altissima qualità.</p></li>
+  <li><h3>Contactless ovunque</h3><p>Per i pagamenti contactless, in qualsiasi momento.</p></li>
+ </ul>
+ <div class="doc">
+  <img loading="lazy" width="1024" height="765" src="img/studio.jpg" alt="Interno di uno studio medico luminoso, immagine illustrativa">
+  <div><h2>In mano a un <em>chirurgo plastico.</em></h2>
+  <p>Il Dott. Massimo Soresina è il primo chirurgo plastico in Italia autorizzato all'impianto Walletmor. Riceve a Milano e a Brescia.</p>
+  <p>Prima di decidere ti spiega come funziona l'impianto e risponde alle tue domande.</p></div>
  </div>
 </div></section>
 
-<!-- STUDIO -->
-<section class="doc"><div class="wrap">
- <img class="rv" loading="lazy" width="1024" height="765" src="img/studio.jpg" alt="Studio medico elegante e luminoso con scrivania in legno e poltrone color sabbia">
- <div>
-  <span class="mono rv">Lo studio</span>
-  <h2 class="big rv">In mani <em>da chirurgo plastico.</em></h2>
-  <p class="rv">Il Dott. Massimo Soresina riceve a Milano e a Brescia. L'attività chirurgica si svolge alla Casa di Cura La Madonnina di Milano.</p>
-  <p class="rv">Prima di decidere ti spiega come funziona l'impianto e risponde alle tue domande.</p>
- </div>
-</div></section>
-
-<!-- CONTATTI -->
-<section class="contact" id="contatti"><div class="in">
- <span class="mono" style="color:var(--chip)">Il primo passo</span>
- <h2>Parliamone. <em>Di persona.</em></h2>
- <p class="l">Scrivi su WhatsApp o chiama: lo studio ti spiega come funziona e risponde alle tue domande.</p>
+<section class="contatti" id="contatti"><div class="wrap">
+ <h2>Parliamone <em>di persona.</em></h2>
+ <p>Scrivi su WhatsApp o chiama lo studio per fissare una consulenza.</p>
  <div class="cta"><a class="btn" href="https://wa.me/393403306774">Scrivi su WhatsApp</a><a class="btn o" href="tel:+393403306774">340 330 6774</a></div>
  <div class="sedi">
   <div><b>Milano</b>Via Mario Pagano 42, 20145</div>
   <div><b>Brescia</b>Indirizzo da fornire</div>
-  <div><b>Chirurgia</b>Casa di Cura La Madonnina<br>Via Quadronno 29, Milano</div>
+  <div><b>Attività chirurgica</b>Casa di Cura La Madonnina<br>Via Quadronno 29, Milano</div>
  </div>
 </div></section>
 </main>
 
 <footer><div class="wrap">
- <p>Dr. Massimo Soresina – Chirurgo Plastico | P.IVA 06430710969 | Iscritto all'Albo dei Medici Chirurghi di Milano dal 27/01/2004 al N. 39053</p>
- <p>Le informazioni pubblicate hanno scopo puramente informativo e non sostituiscono la visita medica specialistica. © 2009-2026 Dr. Massimo Soresina. Immagini generate con l'AI (Gemini); foto Unsplash.</p>
+ <p>Dr. Massimo Soresina, Chirurgo Plastico. P.IVA 06430710969. Iscritto all'Albo dei Medici Chirurghi di Milano dal 27/01/2004 al N. 39053</p>
+ <p>Le informazioni pubblicate hanno scopo puramente informativo e non sostituiscono la visita medica specialistica. Immagini illustrative generate con l'AI (Gemini). © 2009-2026 Dr. Massimo Soresina.</p>
 </div></footer>
 
 <script>
-(()=>{
- const $=(s,r=document)=>[...r.querySelectorAll(s)];
- const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+(() => {
+ const $ = s => document.getElementById(s), tutti = s => [...document.querySelectorAll(s)];
+ const cl = x => Math.min(1, Math.max(0, x)), sm = x => x * x * (3 - 2 * x), r = (v, a, b) => sm(cl((v - a) / (b - a)));
+ const storia = $('storia'), stick = $('stick'), mondo = $('mondo'), scan = $('scan'), chip = $('chip'), anelli = $('anelli'), filo = $('filo'), esito = $('esito'), scorri = $('scorri'), nav = $('nav');
+ const calmo = matchMedia('(prefers-reduced-motion:reduce)').matches;
+ const FINE = 14;                       // durata della storia in "passi"
+ const CX = 395, CY = 547;              // chip nella membrana tra pollice e indice (immagini da 1024)
+ const DA = 5.85, DUR = 1.65;           // inizio e durata delle scene
+ // lettore di ogni scena, nelle coordinate dell'immagine, e messaggio
+ const SCENE = [[372, 690, 'Pagato'], [229, 525, 'Porta aperta'], [181, 641, 'Via libera'], [183, 641, 'Ingresso valido'], [306, 385, 'Profilo condiviso']];
 
- const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
- $('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*70+'ms';io.observe(el)});
+ const strati = tutti('.strato').map(el => {
+  const n = el.dataset.n;
+  el.innerHTML = `<img class="amb" alt="" src="img/${n}-amb.webp"><img class="fig" alt="" src="img/${n}.webp">`;
+  return el;
+ });
+ const testi = tutti('.tx').map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b }));
+ const punti = testi.map(() => $('punti').appendChild(document.createElement('i')));
 
- const prog=el=>{const r=el.getBoundingClientRect();return clamp(-r.top/(r.height-innerHeight))};
- const imp=$('.imp')[0],zoom=$('#zoom')[0],pins=$('.pin2'),sites=$('.sc2');
- const apps=$('.apps')[0],sc=$('.apps .sc'),tx=$('.tx'),rail=$('.rail i');
- const bar=$('#bar')[0];
- // punto su cui ingrandire per ogni posizione (coordinate in % dell'immagine)
- const focus=[[63,51],[50,72]];
- let cur=-1,site=-2,ticking=false;
-
- function frame(){
-  ticking=false;
-  const pi=prog(imp);
-  // all'inizio la mano si vede intera, poi lo zoom segue la posizione scelta
-  const s=pi<.12?-1:pi<.56?0:1;
-  if(s!==site){
-   site=s;
-   if(s<0){zoom.style.transformOrigin='50% 50%';zoom.style.transform='scale(1)'}
-   else{zoom.style.transformOrigin=focus[s][0]+'% '+focus[s][1]+'%';zoom.style.transform='scale(1.7)'}
-   pins.forEach((p,i)=>p.classList.toggle('on',s<0?i===0:i===s));
-   sites.forEach((c,i)=>c.classList.toggle('on',s<0?i===0:i===s));
-  }
-
-  const q=prog(apps),n=sc.length,i=Math.min(n-1,Math.floor(q*n));
-  if(i!==cur){cur=i;sc.forEach((x,j)=>x.classList.toggle('on',j===i));tx.forEach((t,j)=>t.classList.toggle('on',j===i))}
-  rail.forEach((r,j)=>r.style.transform=`scaleX(${clamp(q*n-j)})`);
-
-  const h=document.documentElement;bar.style.transform=`scaleX(${scrollY/(h.scrollHeight-innerHeight)||0})`;
+ let L, X, Y, W, H, tel;
+ function misura() {
+  W = stick.clientWidth; H = stick.clientHeight; tel = W <= 800;
+  L = tel ? Math.max(W * 1.12, Math.min(H * .64, W * 1.45)) : H * .98;
+  // telefono: mano centrata, sul fondo; computer: a destra del testo
+  X = tel ? W / 2 - L * .43 : W * .64 - L * .46;
+  Y = H - L;
+  stick.style.setProperty('--l', L + 'px'); stick.style.setProperty('--x', X + 'px'); stick.style.setProperty('--y', Y + 'px');
+  mondo.style.transformOrigin = `${X + CX / 1024 * L}px ${Y + CY / 1024 * L}px`;
  }
- const req=()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}};
- addEventListener('scroll',req,{passive:true});addEventListener('resize',req);frame();
+ const vis = (el, v) => { el.style.visibility = v ? 'visible' : 'hidden'; };
+
+ function applica(t) {
+  // mano -> raggi X
+  const s = r(t, 1, 2.6), y0 = Math.max(0, Y + L * .05), yy = y0 + (H - y0) * s;
+  vis(strati[0], s < 1);
+  vis(strati[1], s > 0 && t < DA + .8);
+  strati[1].style.clipPath = s < 1 ? `inset(0 0 ${(H - yy).toFixed(1)}px 0)` : 'none';
+  scan.style.transform = `translateY(${yy.toFixed(1)}px)`;
+  scan.style.opacity = s > 0 && s < 1 ? 1 : 0;
+
+  // si avvicina alla membrana, il chip entra, si torna indietro
+  const z = r(t, 2.6, 3.5) * (1 - r(t, 4.5, 5.5));
+  const i = r(t, 3.3, 4.4), dentro = r(t, 4.2, 4.7);
+  const q = cl((t - DA) / DUR), k = Math.min(4, Math.floor((t - DA) / DUR)), f = k >= 0 ? (t - DA) / DUR - k : 0;
+  // sul telefono lo zoom sposta anche il punto verso il centro della parte libera
+  const px = X + CX / 1024 * L, py = Y + CY / 1024 * L;
+  const mx = z * ((tel ? W * .5 : W * .66) - px), my = z * ((tel ? H * .68 : H * .5) - py);
+  mondo.style.transform = `translate3d(${mx.toFixed(1)}px,${my.toFixed(1)}px,0) scale(${(1 + z * 1.5 + .04 * q).toFixed(4)})`;
+  chip.setAttribute('transform', `translate(${(CX - 150 * (1 - i)).toFixed(1)} ${(CY - 250 * (1 - i)).toFixed(1)}) scale(${(1.5 - .6 * i).toFixed(3)})`);
+  chip.setAttribute('opacity', r(t, 3.2, 3.5));
+  anelli.setAttribute('opacity', dentro);
+
+  // il mondo si apre a cerchio dal chip
+  const Rmax = Math.hypot(Math.max(px, W - px), Math.max(py, H - py)) * 1.06;
+  SCENE.forEach((_, j) => {
+   const el = strati[j + 2], a = r(t, DA + j * DUR - .05, DA + j * DUR + .55);
+   const coperto = j < 4 && t > DA + (j + 1) * DUR + .6;
+   vis(el, a > 0 && !coperto);
+   el.style.clipPath = a < 1 ? `circle(${(a * Rmax).toFixed(1)}px at ${px.toFixed(1)}px ${py.toFixed(1)}px)` : 'none';
+  });
+  const S = SCENE[k];
+  if (S) {
+   const [bx, by, msg] = S, via = r(f, .34, .56), spento = k < 4 ? r(f, .9, .97) : 0, e = r(f, .52, .62) * (1 - spento);
+   filo.setAttribute('d', `M${CX} ${CY}Q${(CX + bx) / 2} ${Math.min(CY, by) - 70} ${bx} ${by}`);
+   filo.setAttribute('stroke-dashoffset', 1 - via); filo.setAttribute('opacity', via > 0 ? .9 * (1 - spento) : 0);
+   esito.lastElementChild.textContent = msg;
+   const largo = esito.offsetWidth / 2 + 14;
+   esito.style.left = Math.max(largo, X + bx / 1024 * L) + 'px'; esito.style.top = Y + (by + (k === 4 ? -150 : 115)) / 1024 * L + 'px';
+   esito.style.opacity = e; esito.style.transform = `translate(-50%,-50%) translateY(${(10 * (1 - e)).toFixed(1)}px)`; vis(esito, e > 0);
+  } else { filo.setAttribute('opacity', 0); vis(esito, false); }
+
+  testi.forEach(({ el, a, b }, j) => {
+   const o = r(t, a, a + .22) * (j === testi.length - 1 ? 1 : 1 - r(t, b - .22, b)), d = t < (a + b) / 2 ? 1 : -1;
+   el.style.opacity = o; vis(el, o > .01);
+   el.style.transform = `${tel ? '' : 'translateY(-50%) '}translateY(${(d * 22 * (1 - o)).toFixed(1)}px)`;
+   punti[j].classList.toggle('on', t >= a - .1 && (t < b || j === testi.length - 1));
+  });
+  scorri.style.opacity = 1 - r(t, .05, .4);
+ }
+
+ // lo scorrimento comanda il tempo della storia, ammorbidito (a tempo, non a frame)
+ let t = 0, giro = 0, prec = 0;
+ const meta = () => cl(-storia.getBoundingClientRect().top / (storia.offsetHeight - H)) * FINE;
+ function passo(ora) {
+  const m = meta(), c = prec ? Math.min(4, (ora - prec) / 16.7) : 1; prec = ora;
+  t += (m - t) * (calmo ? 1 : 1 - Math.pow(.86, c));
+  if (Math.abs(m - t) < .002) t = m;
+  applica(t);
+  nav.classList.toggle('chiaro', (() => { const q = document.querySelector('.chiara').getBoundingClientRect(); return q.top < 60 && q.bottom > 60; })());
+  if (t === m) { giro = 0; prec = 0; } else giro = requestAnimationFrame(passo);
+ }
+ const via = () => { if (!giro) giro = requestAnimationFrame(passo); };
+ addEventListener('scroll', via, { passive: true });
+ addEventListener('resize', () => { misura(); applica(t); via(); });
+ misura(); t = meta(); applica(t);
 })();
 </script>
 </body>
