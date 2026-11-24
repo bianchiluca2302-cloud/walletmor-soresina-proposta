@@ -12,7 +12,7 @@
 <style>
 :root{
  --paper:#f4f1ec;--card:#fff;--ink:#0f1b2d;--mut:#5b6b82;--line:#e6e0d6;
- --navy:#06182b;--navy2:#0b2a4a;--xr:#9fe9ff;--chip:#3dffd0;--blue:#4f6bff;
+ --navy:#06182b;--navy2:#0b2a4a;--chip:#3dffd0;--blue:#4f6bff;
  --mint:#d9f5ee;--lilac:#e6e3ff;--sand:#f6e6d0;
  --out:cubic-bezier(.23,1,.32,1);--r:28px;
 }
@@ -37,16 +37,14 @@ nav.top .wrap{display:flex;justify-content:space-between;align-items:center;heig
 .brand small{display:block;font:500 10.5px "JetBrains Mono";color:var(--mut);letter-spacing:.1em;text-transform:uppercase}
 nav.top .btn{min-height:42px;padding:0 22px;font-size:15px}
 
-/* pannello raggi X */
-.xr{position:relative;border-radius:var(--r);background:radial-gradient(80% 60% at 50% 35%,var(--navy2),var(--navy));overflow:hidden;color:#dff6ff}
-.xr::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(159,233,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(159,233,255,.07) 1px,transparent 1px);background-size:32px 32px}
-.xr svg{position:absolute;inset:0;width:100%;height:100%}
-.scan{position:absolute;left:0;right:0;height:90px;background:linear-gradient(transparent,rgba(61,255,208,.16),transparent);animation:scan 5s ease-in-out infinite}
-@keyframes scan{0%{transform:translateY(-100px)}100%{transform:translateY(560px)}}
-.ring{transform-box:fill-box;transform-origin:center;animation:ring 3s var(--out) infinite;opacity:0}
-.ring:nth-child(2){animation-delay:1s}.ring:nth-child(3){animation-delay:2s}
-@keyframes ring{0%{transform:scale(.3);opacity:.9}100%{transform:scale(2.6);opacity:0}}
-.sk{stroke-linecap:round;stroke-linejoin:round;fill:none}
+/* cornice immagine (raggi X / scene) */
+.xr{position:relative;border-radius:var(--r);background:var(--navy);overflow:hidden;box-shadow:0 30px 70px rgba(6,24,43,.28)}
+.xr img{display:block;width:100%;height:100%;object-fit:cover}
+.scan{position:absolute;left:0;right:0;height:90px;background:linear-gradient(transparent,rgba(61,255,208,.14),transparent);animation:scan 5s ease-in-out infinite;pointer-events:none}
+@keyframes scan{0%{transform:translateY(-100px)}100%{transform:translateY(640px)}}
+.tagf{position:absolute;z-index:2;background:rgba(255,255,255,.96);color:var(--ink);border-radius:18px;padding:10px 14px;font-size:14px;font-weight:500;display:flex;gap:10px;align-items:center;box-shadow:0 14px 34px rgba(0,0,0,.28);animation:fl 5s ease-in-out infinite}
+.tagf i{width:10px;height:10px;border-radius:50%;background:var(--chip);box-shadow:0 0 0 4px rgba(61,255,208,.3)}
+@keyframes fl{50%{transform:translateY(-8px)}}
 
 /* hero */
 .hero{padding:120px 0 80px}
@@ -54,10 +52,7 @@ nav.top .btn{min-height:42px;padding:0 22px;font-size:15px}
 .hero h1{font-size:clamp(44px,6.4vw,84px);margin:16px 0 22px}
 .hero p.l{font-size:19px;color:var(--mut);max-width:500px;margin-bottom:32px}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero .xr{aspect-ratio:4/5;max-height:640px}
-.tagf{position:absolute;z-index:2;background:rgba(255,255,255,.96);color:var(--ink);border-radius:18px;padding:10px 14px;font-size:14px;font-weight:500;display:flex;gap:10px;align-items:center;box-shadow:0 14px 34px rgba(0,0,0,.28);animation:fl 5s ease-in-out infinite}
-.tagf i{width:10px;height:10px;border-radius:50%;background:var(--chip);box-shadow:0 0 0 4px rgba(61,255,208,.3)}
-@keyframes fl{50%{transform:translateY(-8px)}}
+.hero .xr{aspect-ratio:4/5;max-height:660px}
 
 /* ticker */
 .ticker{overflow:hidden;border-block:1px solid var(--line);padding:16px 0;background:#fff}
@@ -75,17 +70,22 @@ nav.top .btn{min-height:42px;padding:0 22px;font-size:15px}
 .pin .wrap{display:grid;gap:48px;align-items:center;width:100%}
 h2.big{font-size:clamp(34px,4.8vw,58px);margin:14px 0 18px}
 
-/* dove si impianta */
-.imp{height:420svh}
+/* dove si impianta: zoom sul punto */
+.imp{height:360svh}
 .imp .wrap{grid-template-columns:1fr 1fr}
-.imp .xr{aspect-ratio:4/5;max-height:calc(100svh - 120px);margin:auto;width:100%;max-width:520px}
+.imp .xr{aspect-ratio:4/5;max-height:calc(100svh - 120px);margin:auto;width:auto;max-width:100%;height:calc(100svh - 120px)}
+.zoom{position:absolute;inset:0;transform-origin:50% 50%;transition:transform 1.1s var(--out)}
+.pin2{position:absolute;width:0;height:0;opacity:0;transition:opacity .5s var(--out)}
+.pin2.on{opacity:1}
+.pin2 i{position:absolute;left:-26px;top:-26px;width:52px;height:52px;border-radius:50%;border:2px solid var(--chip);animation:rg 2.4s var(--out) infinite}
+.pin2 i:nth-child(2){animation-delay:.8s}
+@keyframes rg{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.8);opacity:0}}
 .site{margin-top:12px}
 .sc2{display:flex;gap:16px;padding:16px 18px;border-radius:20px;background:var(--card);border:1px solid var(--line);margin-top:12px;opacity:.45;transform:scale(.98);transition:opacity .35s var(--out),transform .35s var(--out),border-color .3s,box-shadow .3s}
 .sc2.on{opacity:1;transform:none;border-color:var(--ink);box-shadow:0 18px 40px rgba(15,27,45,.12)}
 .sc2 b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:500 14px "JetBrains Mono"}
 .sc2 h3{font:600 18px Inter;letter-spacing:0}
 .sc2 p{color:var(--mut);font-size:15px}
-.pt{opacity:0;transition:opacity .4s var(--out)}.pt.on{opacity:1}
 .note{display:inline-block;margin-top:14px;font:500 12px "JetBrains Mono";color:#7a5a00;background:#fff3c4;padding:4px 10px;border-radius:999px}
 
 /* applicazioni */
@@ -102,28 +102,8 @@ h2.big{font-size:clamp(34px,4.8vw,58px);margin:14px 0 18px}
 .rail span{height:4px;flex:1;background:#d9d2c4;border-radius:4px;overflow:hidden}
 .rail i{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left}
 .apps .xr{aspect-ratio:1;width:100%;max-width:540px;margin:auto}
-.sc{opacity:0;transition:opacity .45s var(--out)}.sc.on{opacity:1}
-.sc *{animation-play-state:paused}.sc.on *{animation-play-state:running}
-.d{fill:#0d2540;stroke:#3a5f8a;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.dl{fill:none;stroke:var(--xr);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.hand{animation:tap 3.8s cubic-bezier(.77,0,.175,1) infinite}
-@keyframes tap{0%,12%{transform:translateX(0)}40%,72%{transform:translateX(119px)}94%,100%{transform:translateX(0)}}
-.wv{fill:none;stroke:var(--chip);stroke-width:2.6;stroke-linecap:round;opacity:0;animation:wv 3.8s infinite}
-.wv:nth-child(2){animation-delay:.12s}.wv:nth-child(3){animation-delay:.24s}
-@keyframes wv{0%,38%{opacity:0}48%{opacity:1}66%,100%{opacity:0}}
-.pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop 3.8s var(--out) infinite}
-@keyframes pop{0%,54%{opacity:0;transform:scale(.8)}62%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
-.lockb{transform-box:fill-box;transform-origin:left bottom;animation:lk 3.8s var(--out) infinite}
-@keyframes lk{0%,54%{transform:none}64%,88%{transform:translateY(-9px) rotate(-30deg)}100%{transform:none}}
-.door{transform-box:fill-box;transform-origin:right center;animation:dr 3.8s var(--out) infinite}
-@keyframes dr{0%,60%{transform:none}74%,88%{transform:scaleX(.5)}100%{transform:none}}
-.gbar{transform-box:fill-box;transform-origin:left center;animation:br 3.8s var(--out) infinite}
-@keyframes br{0%,54%{transform:none}68%,88%{transform:rotate(70deg)}100%{transform:none}}
-.scanl{animation:sn 3.8s ease-in-out infinite;opacity:0}
-@keyframes sn{0%,40%{transform:translateY(0);opacity:0}48%{opacity:1}76%{transform:translateY(120px);opacity:1}82%,100%{opacity:0}}
-.card{animation:cd 3.8s var(--out) infinite}
-@keyframes cd{0%,54%{transform:translateY(130px);opacity:0}72%,90%{transform:none;opacity:1}100%{transform:translateY(130px);opacity:0}}
-.svt{font:500 13px "JetBrains Mono";fill:#e8fbff}.svs{font:11px "JetBrains Mono";fill:#7fa3c4}
+.apps .xr img{position:absolute;inset:0;opacity:0;transform:scale(1.08);transition:opacity .6s var(--out),transform 6s linear}
+.apps .xr img.on{opacity:1;transform:scale(1)}
 
 /* galleria stile Pinterest */
 .gal{padding:120px 0 40px}
@@ -164,7 +144,7 @@ footer p+p{margin-top:8px}
  .hero .xr{aspect-ratio:1;max-height:none}
  .imp .wrap,.apps .wrap{gap:12px;align-content:start}
  .pin .stick{align-items:flex-start;padding-top:78px}
- .imp .xr{aspect-ratio:1;max-width:min(300px,34svh)}
+ .imp .xr{aspect-ratio:1;width:100%;height:auto;max-width:min(320px,36svh)}
  .imp h2.big,.apps h2.big{display:none}.imp .mono{display:none}
  .sc2{padding:10px 14px;margin-top:8px}.sc2 p{font-size:14px}
  .apps .wrap>div:first-child{order:2}.apps .xr{order:1;max-width:min(310px,38svh)}
@@ -176,35 +156,14 @@ footer p+p{margin-top:8px}
 @media(max-width:560px){.mas{columns:1}}
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
- .scan,.ring,.tagf,.ticker div,.hand,.wv,.pop,.lockb,.door,.gbar,.scanl,.card{animation-duration:0s!important;animation:none}
- .pop,.card{opacity:1;transform:none}
+ .scan,.tagf,.ticker div,.pin2 i{animation:none}
+ .zoom,.apps .xr img{transition:opacity .2s}
  .rv{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 <div class="bar" id="bar"></div>
-
-<!-- definizioni: mano a raggi X (pollice a destra, chip nella membrana pollice-indice) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
- <marker id="jt" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="6" refY="6"><circle cx="6" cy="6" r="4.6" fill="#eaffff"/></marker>
- <g id="bones" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#jt)" marker-mid="url(#jt)" marker-end="url(#jt)">
-  <path pathLength="1" d="M140 265L148 190L152 140L154 108L155 86"/>
-  <path pathLength="1" d="M122 262L122 180L122 120L122 88L122 64"/>
-  <path pathLength="1" d="M106 265L98 190L94 138L92 106L91 84"/>
-  <path pathLength="1" d="M92 272L74 205L68 165L65 140L64 122"/>
-  <path pathLength="1" d="M152 278L180 235L200 200L210 172"/>
-  <path pathLength="1" d="M94 362L98 304"/><path pathLength="1" d="M140 362L136 304"/>
- </g>
- <g id="xhand">
-  <path d="M62 215L96 182L122 170L150 186L172 214L192 236L172 288L150 308L90 308Z" fill="#cfefff" opacity=".12"/>
-  <use href="#bones" stroke="#cfefff" stroke-width="27" opacity=".13" style="stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,1))"/>
-  <use href="#bones" stroke="#6fd6ff" stroke-width="8" opacity=".6" style="stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,1))"/>
-  <use href="#bones" stroke="#fff" stroke-width="2.6" opacity=".95" style="stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,1))"/>
-  <g fill="#bdeeff" opacity=".7"><circle cx="100" cy="286" r="7"/><circle cx="118" cy="290" r="7"/><circle cx="136" cy="285" r="7"/><circle cx="110" cy="272" r="6"/><circle cx="128" cy="272" r="6"/></g>
- </g>
- <g id="chipg"><rect x="-15" y="-5.5" width="30" height="11" rx="5.5" fill="#06182b" stroke="#3dffd0" stroke-width="2"/><path d="M-8 0h16" stroke="#3dffd0" stroke-width="1.6"/></g>
-</defs></svg>
 
 <nav class="top"><div class="wrap">
  <a class="brand" href="#top">Walletmor<small>Dott. Massimo Soresina</small></a>
@@ -220,13 +179,10 @@ footer p+p{margin-top:8px}
   <p class="l rv">Walletmor è il chip NFC sottocutaneo per pagare in contactless in qualsiasi momento, ovunque. Lo impianta il Dott. Massimo Soresina a Milano e Brescia.</p>
   <div class="cta rv"><a class="btn" href="#contatti">Prenota una consulenza</a><a class="btn o" href="#dove">Dove si impianta</a></div>
  </div>
- <div class="xr rv" role="img" aria-label="Mano a raggi X con il chip Walletmor nella membrana tra pollice e indice">
+ <div class="xr rv">
+  <img src="img/hero-mano-xray.jpg" width="825" height="1024" alt="Mano a raggi X con il chip Walletmor nella membrana tra pollice e indice">
   <div class="scan"></div>
-  <svg viewBox="30 40 200 330" preserveAspectRatio="xMidYMid meet">
-   <use href="#xhand"/>
-   <g transform="translate(163 212) rotate(-62)"><g class="ring"><circle r="10" fill="none" stroke="#3dffd0" stroke-width="2"/></g><g class="ring"><circle r="10" fill="none" stroke="#3dffd0" stroke-width="2"/></g><g class="ring"><circle r="10" fill="none" stroke="#3dffd0" stroke-width="2"/></g><use href="#chipg"/></g>
-  </svg>
-  <div class="tagf" style="left:6%;bottom:9%"><i></i>Chip NFC passivo · nessuna batteria</div>
+  <div class="tagf" style="left:6%;bottom:7%"><i></i>Chip NFC passivo · nessuna batteria</div>
  </div>
 </div></header>
 
@@ -237,22 +193,20 @@ footer p+p{margin-top:8px}
 <!-- DOVE SI IMPIANTA -->
 <section class="pin imp" id="dove" aria-labelledby="dove-t">
  <div class="stick"><div class="wrap">
-  <div class="xr" id="impx" role="img" aria-label="Mano a raggi X con tre possibili punti d'impianto">
+  <div class="xr" id="impx">
+   <div class="zoom" id="zoom">
+    <img src="img/punti-impianto.jpg" width="825" height="1024" alt="Mano a raggi X con due possibili punti d'impianto del chip: membrana tra pollice e indice e polso" loading="lazy">
+    <span class="pin2 on" data-p="0" style="left:63%;top:51%"><i></i><i></i></span>
+    <span class="pin2" data-p="1" style="left:50%;top:72%"><i></i><i></i></span>
+   </div>
    <div class="scan"></div>
-   <svg viewBox="30 40 200 330" preserveAspectRatio="xMidYMid meet" id="impsvg">
-    <use href="#xhand"/>
-    <g class="pt on" data-p="0"><g transform="translate(163 212) rotate(-62)"><g class="ring"><circle r="10" fill="none" stroke="#3dffd0" stroke-width="2"/></g><g class="ring"><circle r="10" fill="none" stroke="#3dffd0" stroke-width="2"/></g><use href="#chipg"/></g></g>
-    <g class="pt" data-p="1"><g transform="translate(150 262) rotate(-55)"><g class="ring"><circle r="10" fill="none" stroke="#3dffd0" stroke-width="2"/></g><g class="ring"><circle r="10" fill="none" stroke="#3dffd0" stroke-width="2"/></g><use href="#chipg"/></g></g>
-    <g class="pt" data-p="2"><g transform="translate(116 322)"><g class="ring"><circle r="10" fill="none" stroke="#3dffd0" stroke-width="2"/></g><g class="ring"><circle r="10" fill="none" stroke="#3dffd0" stroke-width="2"/></g><use href="#chipg"/></g></g>
-   </svg>
   </div>
   <div>
    <span class="mono">Dove si impianta</span>
    <h2 class="big" id="dove-t">Dove può essere <em>impiantato.</em></h2>
    <div class="site">
-    <div class="sc2 on" data-s="0"><b>1</b><div><h3>Membrana tra pollice e indice</h3><p>È il punto più usato: comodo da avvicinare al lettore.</p></div></div>
-    <div class="sc2" data-s="1"><b>2</b><div><h3>Base del pollice</h3><p>Una posizione alternativa, sempre sulla mano.</p></div></div>
-    <div class="sc2" data-s="2"><b>3</b><div><h3>Polso</h3><p>Per chi preferisce un punto più discreto.</p></div></div>
+    <div class="sc2 on" data-s="0"><b>1</b><div><h3>Membrana tra pollice e indice</h3><p>Un punto comodo da avvicinare al lettore.</p></div></div>
+    <div class="sc2" data-s="1"><b>2</b><div><h3>Polso</h3><p>Una posizione alternativa, più discreta.</p></div></div>
    </div>
    <span class="note">Posizioni da confermare con il Dott. Soresina</span>
   </div>
@@ -274,62 +228,12 @@ footer p+p{margin-top:8px}
    </div>
    <div class="rail" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
   </div>
-
-  <div class="xr" role="img" aria-label="Illustrazione animata dell'applicazione selezionata">
-   <svg viewBox="0 0 400 400" aria-hidden="true">
-    <!-- 0 pagamento -->
-    <g class="sc on">
-     <rect class="d" x="292" y="196" width="82" height="150" rx="12"/>
-     <rect x="302" y="208" width="62" height="44" rx="6" fill="#06182b" stroke="#6fd6ff" stroke-width="2"/>
-     <text class="svt" x="333" y="228" text-anchor="middle">€ 4,50</text>
-     <g class="pop"><circle cx="333" cy="241" r="7" fill="none" stroke="#3dffd0" stroke-width="2.4"/><path d="M329.5 241l2.6 2.6 5-5" fill="none" stroke="#3dffd0" stroke-width="2.4" stroke-linecap="round"/></g>
-     <path d="M304 270h12M322 270h12M340 270h12M304 288h12M322 288h12M340 288h12M304 306h12M322 306h12M340 306h12" stroke="#3a5f8a" stroke-width="3" stroke-linecap="round"/>
-     <text class="svs" x="333" y="368" text-anchor="middle">POS CONTACTLESS</text>
-     <g transform="translate(256 266)"><path class="wv" d="M0 -10a14 14 0 0 1 0 20"/><path class="wv" d="M9 -17a24 24 0 0 1 0 34"/><path class="wv" d="M18 -24a34 34 0 0 1 0 48"/></g>
-    </g>
-    <!-- 1 accessi -->
-    <g class="sc">
-     <rect class="d" x="294" y="120" width="86" height="250" rx="4"/>
-     <rect class="door d" x="302" y="130" width="70" height="230" rx="3" style="fill:#12365c"/>
-     <circle cx="316" cy="250" r="3.5" fill="#6fd6ff"/>
-     <rect class="d" x="268" y="240" width="18" height="48" rx="6"/>
-     <g transform="translate(277 212)"><rect x="-11" y="8" width="22" height="18" rx="3.5" fill="#06182b" stroke="#3dffd0" stroke-width="2.4"/><path class="lockb" d="M-6 8V1a6 6 0 0 1 12 0v7" fill="none" stroke="#3dffd0" stroke-width="2.4" stroke-linecap="round"/></g>
-     <text class="svs" x="334" y="392" text-anchor="middle">PORTA CON LETTORE NFC</text>
-    </g>
-    <!-- 2 trasporti -->
-    <g class="sc">
-     <rect class="d" x="292" y="210" width="84" height="130" rx="10"/>
-     <rect x="301" y="220" width="66" height="34" rx="6" fill="#06182b" stroke="#6fd6ff" stroke-width="2"/>
-     <text class="svt" x="334" y="241" text-anchor="middle">LINEA M3</text>
-     <path class="gbar dl" d="M300 300h66" stroke-width="5"/>
-     <g class="pop"><circle cx="334" cy="274" r="6.5" fill="none" stroke="#3dffd0" stroke-width="2.4"/><path d="M331 274l2.4 2.4 4.4-4.4" fill="none" stroke="#3dffd0" stroke-width="2.4" stroke-linecap="round"/></g>
-     <text class="svs" x="334" y="368" text-anchor="middle">TORNELLO</text>
-     <g transform="translate(256 266)"><path class="wv" d="M0 -10a14 14 0 0 1 0 20"/><path class="wv" d="M9 -17a24 24 0 0 1 0 34"/><path class="wv" d="M18 -24a34 34 0 0 1 0 48"/></g>
-    </g>
-    <!-- 3 eventi -->
-    <g class="sc">
-     <path class="d" d="M292 150h74a8 8 0 0 0 8 8v30a8 8 0 0 0-8 8v8a8 8 0 0 0 8 8v30a8 8 0 0 0-8 8v8a8 8 0 0 0 8 8v30a8 8 0 0 0-8 8h-74a8 8 0 0 0-8-8v-30a8 8 0 0 0 8-8v-8a8 8 0 0 0-8-8v-30a8 8 0 0 0 8-8v-8a8 8 0 0 0-8-8v-30a8 8 0 0 0 8-8z"/>
-     <text class="svt" x="300" y="184">LIVE · SAB</text><text class="svs" x="300" y="200">1 PERSONA</text>
-     <path d="M300 222h10M316 222h5M326 222h12M344 222h6M300 242h6M312 242h12M330 242h5M341 242h10M300 262h12M318 262h6M330 262h14" stroke="#3a5f8a" stroke-width="3" stroke-linecap="round"/>
-     <rect class="scanl" x="288" y="214" width="84" height="3" fill="#3dffd0"/>
-     <g class="pop"><circle cx="350" cy="178" r="9" fill="none" stroke="#3dffd0" stroke-width="2.4"/><path d="M345 178l3.4 3.4 6-6" fill="none" stroke="#3dffd0" stroke-width="2.4" stroke-linecap="round"/></g>
-     <text class="svs" x="334" y="372" text-anchor="middle">VARCO ELETTRONICO</text>
-     <g transform="translate(256 266)"><path class="wv" d="M0 -10a14 14 0 0 1 0 20"/><path class="wv" d="M9 -17a24 24 0 0 1 0 34"/><path class="wv" d="M18 -24a34 34 0 0 1 0 48"/></g>
-    </g>
-    <!-- 4 biglietto da visita -->
-    <g class="sc">
-     <rect class="d" x="288" y="130" width="92" height="236" rx="18"/>
-     <path d="M318 142h32" stroke="#3a5f8a" stroke-width="4" stroke-linecap="round"/>
-     <g transform="translate(0 -14)"><g class="card"><rect x="297" y="215" width="74" height="104" rx="10" fill="#06182b" stroke="#6fd6ff" stroke-width="2"/>
-      <circle cx="315" cy="238" r="9" fill="rgba(79,107,255,.5)" stroke="#8fa2ff" stroke-width="2"/>
-      <text class="svt" x="330" y="236" style="font-size:11px">Luca R.</text><text class="svs" x="330" y="248" style="font-size:9px">Developer</text>
-      <path d="M306 266h56M306 280h40M306 294h48" stroke="#6fd6ff" stroke-width="2.4" stroke-linecap="round" opacity=".7"/></g></g>
-     <text class="svs" x="334" y="388" text-anchor="middle">SMARTPHONE</text>
-     <g transform="translate(256 266)"><path class="wv" d="M0 -10a14 14 0 0 1 0 20"/><path class="wv" d="M9 -17a24 24 0 0 1 0 34"/><path class="wv" d="M18 -24a34 34 0 0 1 0 48"/></g>
-    </g>
-    <!-- la mano, comune a tutte le scene -->
-    <g class="hand"><g transform="translate(0 90) scale(.78)"><use href="#xhand"/><g transform="translate(163 212) rotate(-62)"><use href="#chipg"/></g></g></g>
-   </svg>
+  <div class="xr">
+   <img class="sc on" src="img/scena-pagamento.jpg" width="1024" height="1024" alt="Mano a raggi X con chip che avvicina il palmo a un POS contactless">
+   <img class="sc" src="img/scena-porta.jpg" width="1024" height="1024" alt="Mano a raggi X con chip davanti al lettore NFC di una porta" loading="lazy">
+   <img class="sc" src="img/scena-tornello.jpg" width="1024" height="1024" alt="Mano a raggi X con chip sul lettore di un tornello della metropolitana" loading="lazy">
+   <img class="sc" src="img/scena-evento.jpg" width="1024" height="1024" alt="Mano a raggi X con chip davanti a un varco elettronico di un concerto" loading="lazy">
+   <img class="sc" src="img/scena-biglietto.jpg" width="1024" height="1024" alt="Mano a raggi X con chip vicino a uno smartphone che mostra un profilo digitale" loading="lazy">
   </div>
  </div></div>
 </section>
@@ -338,19 +242,19 @@ footer p+p{margin-top:8px}
 <section class="gal"><div class="wrap">
  <div class="head"><span class="mono rv">In pratica</span><h2 class="big rv">Tecnologia che si <em>porta addosso.</em></h2></div>
  <div class="mas">
-  <article class="pc rv"><img loading="lazy" width="900" height="700" style="aspect-ratio:9/7" src="https://images.unsplash.com/photo-1772734645633-5bfbbb87da88?auto=format&fit=crop&w=900&q=75" alt="Due persone avvicinano lo smartphone a un terminale di pagamento contactless"><div class="b"><h3>Contactless, ma senza oggetti</h3><p>Lo stesso gesto del pagamento col telefono, con il chip al posto dello smartphone.</p></div></article>
+  <article class="pc rv"><img loading="lazy" width="1024" height="1024" src="img/scena-pagamento.jpg" alt="Mano a raggi X con chip che paga su un POS"><div class="b"><h3>Contactless, ma senza oggetti</h3><p>Lo stesso gesto del pagamento col telefono, con il chip al posto dello smartphone.</p></div></article>
   <article class="pc m rv"><div class="b"><div class="big-n">0</div><h3>batterie</h3><p>Il chip è passivo: si attiva solo vicino a un lettore, senza ricariche.</p><span class="chip2">NFC PASSIVO</span></div></article>
   <article class="pc rv"><img loading="lazy" width="900" height="700" style="aspect-ratio:9/7" src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=900&q=75" alt="Mano bionica blu su sfondo turchese"><div class="b"><h3>Il futuro è già qui</h3><p>Per chi ama la tecnologia e vuole provarla in prima persona.</p></div></article>
-  <article class="pc n rv"><img loading="lazy" width="900" height="620" style="aspect-ratio:900/620" src="https://images.unsplash.com/photo-1620908559931-021950013455?auto=format&fit=crop&w=900&q=75" alt="Radiografia azzurra di una mano su fondo scuro"><div class="b"><h3>Sicuro per costruzione</h3><p>Capsula ermeticamente sigillata, in materiali biocompatibili di altissima qualità.</p></div></article>
+  <article class="pc n rv"><img loading="lazy" width="825" height="1024" style="aspect-ratio:4/3;object-position:50% 55%" src="img/hero-mano-xray.jpg" alt="Radiografia di una mano con il chip luminoso"><div class="b"><h3>Sicuro per costruzione</h3><p>Capsula ermeticamente sigillata, in materiali biocompatibili di altissima qualità.</p></div></article>
   <article class="pc l rv"><div class="b"><div class="big-n">24/7</div><h3>Pagamenti ovunque</h3><p>Funziona su qualsiasi terminale contactless, in qualsiasi momento.</p><span class="chip2">SU TERMINALI CONTACTLESS</span></div></article>
-  <article class="pc rv"><img loading="lazy" width="900" height="760" style="aspect-ratio:9/7.6;object-position:50% 75%" src="https://images.unsplash.com/photo-1778795269038-7833aed9d136?auto=format&fit=crop&w=900&q=75" alt="Un orologio da polso avvicinato a un POS per pagare"><div class="b"><h3>Dal polso alla mano</h3><p>Dopo lo smartwatch, il passo successivo: niente da indossare, niente da caricare.</p></div></article>
+  <article class="pc rv"><img loading="lazy" width="1024" height="1024" src="img/scena-evento.jpg" alt="Mano a raggi X con chip davanti a un varco di concerto"><div class="b"><h3>Un tocco e sei dentro</h3><p>Dopo lo smartwatch, il passo successivo: niente da indossare, niente da caricare.</p></div></article>
   <article class="pc s rv"><div class="b"><h3>Un gesto da chirurgo</h3><p>L'impianto lo esegue un chirurgo plastico iscritto all'Albo di Milano dal 2004, il primo in Italia autorizzato all'impianto Walletmor.</p><span class="chip2">ALBO MILANO N. 39053</span></div></article>
  </div>
 </div></section>
 
 <!-- STUDIO -->
 <section class="doc"><div class="wrap">
- <img class="rv" loading="lazy" width="1100" height="825" src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1100&q=75" alt="Sala medica luminosa con lettino e lampada chirurgica">
+ <img class="rv" loading="lazy" width="1024" height="765" src="img/studio.jpg" alt="Studio medico elegante e luminoso con scrivania in legno e poltrone color sabbia">
  <div>
   <span class="mono rv">Lo studio</span>
   <h2 class="big rv">In mani <em>da chirurgo plastico.</em></h2>
@@ -375,42 +279,46 @@ footer p+p{margin-top:8px}
 
 <footer><div class="wrap">
  <p>Dr. Massimo Soresina – Chirurgo Plastico | P.IVA 06430710969 | Iscritto all'Albo dei Medici Chirurghi di Milano dal 27/01/2004 al N. 39053</p>
- <p>Le informazioni pubblicate hanno scopo puramente informativo e non sostituiscono la visita medica specialistica. © 2009-2026 Dr. Massimo Soresina. Foto: Unsplash.</p>
+ <p>Le informazioni pubblicate hanno scopo puramente informativo e non sostituiscono la visita medica specialistica. © 2009-2026 Dr. Massimo Soresina. Immagini generate con l'AI (Gemini); foto Unsplash.</p>
 </div></footer>
 
 <script>
 (()=>{
  const $=(s,r=document)=>[...r.querySelectorAll(s)];
  const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
- const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 
  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
  $('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*70+'ms';io.observe(el)});
 
  const prog=el=>{const r=el.getBoundingClientRect();return clamp(-r.top/(r.height-innerHeight))};
- const imp=$('.imp')[0],impsvg=$('#impsvg')[0],pts=$('.pt'),sites=$('.sc2');
+ const imp=$('.imp')[0],zoom=$('#zoom')[0],pins=$('.pin2'),sites=$('.sc2');
  const apps=$('.apps')[0],sc=$('.apps .sc'),tx=$('.tx'),rail=$('.rail i');
  const bar=$('#bar')[0];
- let cur=-1,site=-1,sm=0,tgt=0,raf=0;
+ // punto su cui ingrandire per ogni posizione (coordinate in % dell'immagine)
+ const focus=[[63,51],[50,72]];
+ let cur=-1,site=-2,ticking=false;
 
- function update(){
-  raf=0;
-  // lo scorrimento viene "ammorbidito": la mano si disegna seguendo la rotella senza scatti
+ function frame(){
+  ticking=false;
   const pi=prog(imp);
-  tgt=pi;sm+=(tgt-sm)*(reduce?1:.14);
-  impsvg.style.setProperty('--d',clamp(sm/.32));
-  const s=pi<.42?0:pi<.72?1:2;
-  if(s!==site){site=s;pts.forEach((p,i)=>p.classList.toggle('on',i===s));sites.forEach((c,i)=>c.classList.toggle('on',i===s))}
+  // all'inizio la mano si vede intera, poi lo zoom segue la posizione scelta
+  const s=pi<.12?-1:pi<.56?0:1;
+  if(s!==site){
+   site=s;
+   if(s<0){zoom.style.transformOrigin='50% 50%';zoom.style.transform='scale(1)'}
+   else{zoom.style.transformOrigin=focus[s][0]+'% '+focus[s][1]+'%';zoom.style.transform='scale(1.7)'}
+   pins.forEach((p,i)=>p.classList.toggle('on',s<0?i===0:i===s));
+   sites.forEach((c,i)=>c.classList.toggle('on',s<0?i===0:i===s));
+  }
 
   const q=prog(apps),n=sc.length,i=Math.min(n-1,Math.floor(q*n));
   if(i!==cur){cur=i;sc.forEach((x,j)=>x.classList.toggle('on',j===i));tx.forEach((t,j)=>t.classList.toggle('on',j===i))}
   rail.forEach((r,j)=>r.style.transform=`scaleX(${clamp(q*n-j)})`);
 
   const h=document.documentElement;bar.style.transform=`scaleX(${scrollY/(h.scrollHeight-innerHeight)||0})`;
-  if(Math.abs(tgt-sm)>.002)raf=requestAnimationFrame(update);
  }
- const req=()=>{if(!raf)raf=requestAnimationFrame(update)};
- addEventListener('scroll',req,{passive:true});addEventListener('resize',req);update();
+ const req=()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}};
+ addEventListener('scroll',req,{passive:true});addEventListener('resize',req);frame();
 })();
 </script>
 </body>
