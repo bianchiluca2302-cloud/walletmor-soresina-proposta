@@ -13,6 +13,7 @@
 <style>
 :root{--notte:#04121f;--carta:#f4f1ec;--ink:#0f1b2d;--mut:#5b6b82;--chip:#3dffd0;--out:cubic-bezier(.23,1,.32,1)}
 *{box-sizing:border-box;margin:0}
+html{background:var(--notte);color-scheme:dark}
 body{background:var(--notte);color:#eaf6ff;font:17px/1.6 Inter,system-ui,sans-serif}
 h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;line-height:1.05;letter-spacing:-.02em}
 em{font-style:italic;color:var(--chip)}
@@ -339,9 +340,7 @@ footer p+p{margin-top:8px}
   if (Math.abs(m - t) < .002) t = m;
   applica(t);
   const fs = storia.getBoundingClientRect().bottom, q = document.querySelector('.chiara').getBoundingClientRect();
-  const chiaro = q.top < 60 && q.bottom > 60;
-  nav.classList.toggle('chiaro', chiaro);
-  nav.classList.toggle('scuro', fs < 68 && !chiaro);   // finita la storia: banda scura opaca, le scritte sotto non si sovrappongono
+  nav.classList.toggle('scuro', fs < 68);   // finita la storia: banda scura opaca, le scritte sotto non si sovrappongono
   if (t === m) { giro = 0; prec = 0; } else giro = requestAnimationFrame(passo);
  }
  const via = () => { if (!giro) giro = requestAnimationFrame(passo); };
