@@ -29,6 +29,7 @@ nav.top .wrap{max-width:none;padding:0 clamp(20px,4vw,56px);display:flex;justify
 .brand small{display:block;font:12px Inter;opacity:.7;margin-top:3px}
 nav.top .btn{min-height:44px;padding:0 20px;font-size:15px}
 nav.top{transition:color .3s,background .3s}
+nav.top.scuro{background:rgba(4,18,31,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(255,255,255,.08)}
 nav.top.chiaro{color:var(--ink);background:rgba(244,241,236,.94)}
 
 /* scena unica: la mano resta ferma, cambia tutto il resto */
@@ -62,6 +63,24 @@ nav.top.chiaro{color:var(--ink);background:rgba(244,241,236,.94)}
 .punti i.on{opacity:1;transform:scaleY(3);margin:6px 0}
 .scorri{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:14px;background:rgba(4,18,31,.72);padding:8px 18px;border-radius:99px}
 
+/* dove si impianta */
+.dove{height:420svh;position:relative}
+.dove .stick{background:var(--notte)}
+.mondo2{position:absolute;inset:0;transition:transform 1.1s var(--out);will-change:transform}
+.dove .sopra .punto{transition:opacity .5s var(--out)}
+.dove .sopra .punto .num{font:600 26px Inter,sans-serif;fill:#04231d}
+.dove .velo{background:linear-gradient(90deg,rgba(4,18,31,.94),rgba(4,18,31,.6) 36%,transparent 58%)}
+.dtx{position:absolute;left:clamp(20px,6vw,110px);top:50%;transform:translateY(-50%);width:min(470px,38vw)}
+.dtx h2{font-size:clamp(36px,4.2vw,62px);margin-bottom:22px}
+.dtx ol{list-style:none;padding:0;display:grid;gap:10px}
+.dtx li{display:grid;grid-template-columns:34px 1fr;gap:4px 14px;padding:14px 16px;border-radius:18px;border:1px solid #1d3550;opacity:.5;transition:opacity .4s var(--out),background .4s,border-color .4s}
+.dtx li.on{opacity:1;background:rgba(61,255,208,.09);border-color:var(--chip)}
+.dtx li b{grid-row:span 2;width:34px;height:34px;border-radius:50%;background:var(--chip);color:#04231d;display:grid;place-items:center;font-size:16px}
+.dtx li h3{font:600 19px Inter,sans-serif;letter-spacing:0}
+.dtx li p{display:none;color:#c3d8ea;font-size:15.5px;line-height:1.5}
+.dtx li.on p{display:block}
+.dove .punti{right:clamp(10px,2vw,28px)}
+
 /* dopo la storia */
 .chiara{background:var(--carta);color:var(--ink);padding:120px 0 90px}
 .chiara em{color:#0a7f69}
@@ -84,6 +103,11 @@ footer{border-top:1px solid #17304a;padding:28px 0 44px;font-size:13px;color:#8f
 footer p+p{margin-top:8px}
 
 @media(max-width:800px){
+ .dtx{top:calc(80px + env(safe-area-inset-top));transform:none;left:20px;right:32px;width:auto}
+ .dtx h2{font-size:30px;margin-bottom:10px}.dtx ol{gap:6px}
+ .dtx li{padding:9px 12px;grid-template-columns:30px 1fr;border-radius:14px}.dtx li b{width:28px;height:28px;font-size:14px}
+ .dtx li h3{font-size:16.5px}.dtx li p{font-size:14px;line-height:1.4}
+ .dove .velo{background:linear-gradient(rgba(4,18,31,.95) 36%,rgba(4,18,31,.5) 54%,transparent 68%)}
  .tx{top:calc(84px + env(safe-area-inset-top));left:24px;right:34px;width:auto}
  .tx h1{font-size:clamp(38px,10.5vw,46px);margin-bottom:12px}.tx h2{font-size:34px;margin-bottom:10px}
  .tx p{font-size:16px;line-height:1.5}.tx .cta{margin-top:16px}.tx .nota{margin-top:8px}
@@ -150,6 +174,24 @@ footer p+p{margin-top:8px}
  </div>
 </section>
 
+<section class="dove" id="dove" aria-labelledby="dove-t">
+ <div class="stick" id="stick2">
+  <div class="mondo2" id="mondo2">
+   <div class="strato" data-n="raggi" style="visibility:visible"></div>
+   <svg class="sopra" id="punti-svg" viewBox="0 0 1024 1024" aria-hidden="true"></svg>
+  </div>
+  <div class="velo"></div>
+  <div class="dtx">
+   <h2 id="dove-t">Dove si può <em>impiantare.</em></h2>
+   <ol id="dlista">
+    <li class="on"><b>1</b><h3>Tra pollice e indice</h3><p>Nel tessuto molle della membrana tra le due dita, dove non ci sono ossa di mezzo.</p></li>
+    <li><b>2</b><h3>Tra mignolo e anulare</h3><p>Un po' più verso il centro della mano, nello spazio tra i due metacarpi.</p></li>
+    <li><b>3</b><h3>Sul polso</h3><p>Sul dorso del polso, nella parte esterna, appena sotto la pelle.</p></li>
+   </ol>
+  </div>
+ </div>
+</section>
+
 <section class="chiara"><div class="wrap">
  <h2>Un chip solo, <em>sempre con te.</em></h2>
  <ul class="fatti">
@@ -186,7 +228,7 @@ footer p+p{margin-top:8px}
 (() => {
  const $ = s => document.getElementById(s), tutti = s => [...document.querySelectorAll(s)];
  const cl = x => Math.min(1, Math.max(0, x)), sm = x => x * x * (3 - 2 * x), r = (v, a, b) => sm(cl((v - a) / (b - a)));
- const storia = $('storia'), stick = $('stick'), mondo = $('mondo'), scan = $('scan'), chip = $('chip'), anelli = $('anelli'), filo = $('filo'), esito = $('esito'), scorri = $('scorri'), nav = $('nav');
+ const storia = $('storia'), stick = $('stick'), stick2 = $('stick2'), dove = $('dove'), mondo2 = $('mondo2'), psvg = $('punti-svg'), dlista = $('dlista'), storiaPunti = $('punti'), mondo = $('mondo'), scan = $('scan'), chip = $('chip'), anelli = $('anelli'), filo = $('filo'), esito = $('esito'), scorri = $('scorri'), nav = $('nav');
  const calmo = matchMedia('(prefers-reduced-motion:reduce)').matches;
  const FINE = 14;                       // durata della storia in "passi"
  const CX = 395, CY = 547;              // chip nella membrana tra pollice e indice (immagini da 1024)
@@ -199,6 +241,31 @@ footer p+p{margin-top:8px}
   el.innerHTML = `<img class="amb" alt="" src="img/${n}-amb.webp"><img class="fig" alt="" src="img/${n}.webp">`;
   return el;
  });
+ const punti2 = [[395, 547, 62], [596, 548, -66], [500, 692, 6]];   // chip: membrana, tra mignolo e anulare, dorso del polso
+ const corpo = document.querySelector('#chip > g:last-child');
+ psvg.innerHTML = '';
+ const pg = punti2.map(([x, y, rot], j) => {
+  const g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); g.setAttribute('class', 'punto');
+  g.innerHTML = '<circle r="72" fill="url(#alone)"></circle><g fill="none" stroke="#3dffd0" stroke-width="1.6"><circle class="anello" r="30"></circle><circle class="anello" r="30"></circle></g>';
+  const c = corpo.cloneNode(true); c.setAttribute('transform', `rotate(${rot}) scale(1.5)`); g.appendChild(c);
+  const n = document.createElementNS('http://www.w3.org/2000/svg', 'g'); n.setAttribute('transform', 'translate(0 -66)');
+  n.innerHTML = `<circle r="22" fill="#3dffd0"></circle><text class="num" text-anchor="middle" y="9">${j + 1}</text>`; g.appendChild(n);
+  g.setAttribute('transform', `translate(${x} ${y})`); psvg.appendChild(g); return g;
+ });
+ const dvoci = [...dlista.children];
+ let passoDove = -1;
+ function applicaDove() {
+  const r = dove.getBoundingClientRect(), q = cl(-r.top / (dove.offsetHeight - H));
+  const k = q < .08 ? -1 : Math.min(2, Math.floor((q - .08) / .92 * 3));
+  if (k === passoDove) return; passoDove = k;
+  dvoci.forEach((li, j) => li.classList.toggle('on', j === Math.max(0, k)));
+  pg.forEach((g, j) => { g.style.opacity = k < 0 ? .85 : j === k ? 1 : .22; g.querySelector('g[fill]').style.opacity = j === k ? 1 : 0; });
+  if (k < 0) { mondo2.style.transformOrigin = '50% 50%'; mondo2.style.transform = 'none'; return; }
+  const [x, y] = punti2[k], px = X + x / 1024 * L, py = Y + y / 1024 * L, zs = tel ? 1.55 : 1.85;
+  const tx = tel ? W * .5 : W * .67, ty = tel ? H * .74 : H * .5;
+  mondo2.style.transformOrigin = px + 'px ' + py + 'px';
+  mondo2.style.transform = `translate3d(${(tx - px).toFixed(1)}px,${(ty - py).toFixed(1)}px,0) scale(${zs})`;
+ }
  const testi = tutti('.tx').map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b }));
  const punti = testi.map(() => $('punti').appendChild(document.createElement('i')));
 
@@ -209,7 +276,7 @@ footer p+p{margin-top:8px}
   // telefono: mano centrata, sul fondo; computer: a destra del testo
   X = tel ? W / 2 - L * .43 : W * .64 - L * .46;
   Y = H - L;
-  stick.style.setProperty('--l', L + 'px'); stick.style.setProperty('--x', X + 'px'); stick.style.setProperty('--y', Y + 'px');
+  [stick, stick2].forEach(e => { e.style.setProperty('--l', L + 'px'); e.style.setProperty('--x', X + 'px'); e.style.setProperty('--y', Y + 'px'); });
   mondo.style.transformOrigin = `${X + CX / 1024 * L}px ${Y + CY / 1024 * L}px`;
  }
  const vis = (el, v) => { el.style.visibility = v ? 'visible' : 'hidden'; };
@@ -271,13 +338,16 @@ footer p+p{margin-top:8px}
   t += (m - t) * (calmo ? 1 : 1 - Math.pow(.86, c));
   if (Math.abs(m - t) < .002) t = m;
   applica(t);
-  nav.classList.toggle('chiaro', (() => { const q = document.querySelector('.chiara').getBoundingClientRect(); return q.top < 60 && q.bottom > 60; })());
+  const fs = storia.getBoundingClientRect().bottom, q = document.querySelector('.chiara').getBoundingClientRect();
+  const chiaro = q.top < 60 && q.bottom > 60;
+  nav.classList.toggle('chiaro', chiaro);
+  nav.classList.toggle('scuro', fs < 68 && !chiaro);   // finita la storia: banda scura opaca, le scritte sotto non si sovrappongono
   if (t === m) { giro = 0; prec = 0; } else giro = requestAnimationFrame(passo);
  }
  const via = () => { if (!giro) giro = requestAnimationFrame(passo); };
- addEventListener('scroll', via, { passive: true });
- addEventListener('resize', () => { misura(); applica(t); via(); });
- misura(); t = meta(); applica(t);
+ addEventListener('scroll', () => { via(); applicaDove(); }, { passive: true });
+ addEventListener('resize', () => { misura(); applica(t); via(); passoDove = -2; applicaDove(); });
+ misura(); t = meta(); applica(t); applicaDove();
 })();
 </script>
 </body>
